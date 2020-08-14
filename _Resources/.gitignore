@@ -1,0 +1,6 @@
+# ignore everything except for stated files and directories in folder
+/*
+!img/
+!_libs/
+!.gitignore
+!README.md
