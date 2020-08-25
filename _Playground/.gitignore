@@ -1,9 +1,4 @@
 # ignore everything except for stated files and directories in folder
 /*
-!img/
-!_libs/
-!Lab_3/
-!Lab_4/
-!Project/
 !.gitignore
 !README.md

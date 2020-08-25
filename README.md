@@ -35,18 +35,21 @@ The file / folder structure of this repo is determined by its initial state and 
 
 ````
 root/
-    _Resources/
-    Laboration_1/
-    Laboration_2/
-    Laboration_3/
-    Laboration_4/
-    Laboration_5/
-    Project/
-    .gitignore
-    CMakeLists.txt
-    README.md
+  _Playground/
+  _Resources/
+  Laboration_1/
+  Laboration_2/
+  Laboration_3/
+  Laboration_4/
+  Laboration_5/
+  Project/
+  .gitignore
+  CMakeLists.txt
+  README.md
 ````
 
+- **``_Playground/``** constitute as a sandbox for you to simply experiment and play around. Nothing you add to this directory will be included in versioning. 
+Further details can be seen in dedicated [**``README.md``**](./_Playground/README.md).
 - **``_Resources/``** constitute as a common place to write and read data stored in files, and is shared by all assignments. 
 Further details can be seen in dedicated [**``README.md``**](./_Resources/README.md).
 - **``.gitignore``** dictates which content should be excluded from version control, i.e. not included in commits. 
@@ -56,10 +59,10 @@ Each assignment subdirectory has an identical file / folder structure:
 
 ````
 Laboration_x/
-    include/
-    src/
-    CMakeLists.txt
-    README.md
+  include/
+  src/
+  CMakeLists.txt
+  README.md
 ````
 
 - **``include/``** needs to contain all header files (``**.h``**) specific for this assignment.
