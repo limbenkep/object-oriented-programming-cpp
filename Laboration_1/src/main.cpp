@@ -1,29 +1,26 @@
+/* main.cpp
+ * Honorine Lima
+ * Holi1900
+ * DT060G_Laboration_1
+ * 2020-09-03.
+*/
+
+/*
+ * This program uses two classes, the Queue class and TestApp class and is designed to allow the user to create and
+ * manage a  queue of desired size to store integers.
+ * Only one queue is generated at a time and the old queues is deleted when  new queue is created.
+ * When this program starts, the user have the option to create a queue or quit. If the user chooses to create a queue,
+ * then a  queue is created and the user then have 8 options, to create a new queue, Enqueue, Dequeue, Test if queue is
+ * empty, Test if queue is full, Nr of elements in queue, Maximum size of queue  and Quit.
+ */
 #include "Prototypes.h"
 #include "Queue.h"
 #include "memstat.hpp"
 #include "TestApp.h"
 
-int main() {
-   /* Queue q(12);
-
-    const int iterations = 12;
-    cout << "Size of queue before adding stuff " << q.length() << ", capacity " << q.capacity() <<  endl;
-    for (int i = 1; i <= iterations; ++i)
-    {
-        q.enqueue(i);
-        //cout << "Added " << i << " into queue\n";
-    }
-    cout << "Size of queue after adding "  << iterations << " items " <<  q.length() << " capacity " << q.capacity() << endl;
-    for (int i = 1; i <= iterations; ++i)
-    {
-        int item;
-        q.dequeue(item);
-        //cout << "Dequeued " << item << " into queue\n";
-    }
-
-    cout << "Size of queue after removing "  << iterations << " items " <<  q.length() << " capacity " << q.capacity() << endl;
-*/
-   TestApp a;
-   a.run();
-    return 0;
+int main()
+{
+   TestApp test;
+   test.run();
+   return 0;
 }

@@ -1,14 +1,23 @@
 //
-// Created by limbe on 2020-09-03.
-//
+/* Queue.h
+ * Honorine Lima
+ * Holi1900
+ * DT060G_Laboration_1
+ * 2020-09-03.
+*/
+
+/*The Queue class stores numbers in an array and have data members to keep track of the head and tail of the queue as
+ *well as the number of elements in the queue. The Queue class also have function to add and remove elements from the
+ *Queue, to get the capacity and number of elements in the queue as well as functions to determine if the queue is
+ * full or empty.
+ */
 #ifndef LABORATION_1_QUEUE_H
 #define LABORATION_1_QUEUE_H
 #include<iostream>
 #include <memory>
 using namespace std;
-class Queue;
 
-typedef int Type; // Make Type an alias for int
+typedef int Type; // Makes Type an alias for int
 const int QSIZE = 10; // Default Queue size
 
 class Queue

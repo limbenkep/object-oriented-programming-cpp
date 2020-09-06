@@ -1,6 +1,9 @@
-//
-// Created by limbe on 2020-09-03.
-//
+/*TestApp.cpp
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_1
+* 2020-09-03.
+*/
 
 #include "TestApp.h"
 #include "memory"
@@ -29,10 +32,8 @@ char TestApp::getChoice()
     cout <<"\nmake your choice: ";
     char choice;
     cin >> choice;
-    cout << "you  have chosen option " << choice << endl;
     return choice;
 }
-
 
 char TestApp::getMenuOption()
 {
@@ -102,7 +103,7 @@ void TestApp::createQueue()
     cout << "Number of elements in queue: ";
     int size=0;
     cin >> size;
-    while (!cin||size<1)// control that the entry is an integer
+    while (!cin||size<1)// control that the entry is an integer greater than 0
     {
         cin.clear();
         cin.ignore(1000, '\n');
@@ -111,7 +112,8 @@ void TestApp::createQueue()
     }
     cin.ignore(1000, '\n');
 
-    intQueue = unique_ptr<Queue>(new Queue(size));// creates a unique pointer p pointing to a new Queue object of capacity "size"
+    intQueue = unique_ptr<Queue>(new Queue(size));// creates a new Queue object of capacity "size" held by intQueue
+    cout << "A queue with a maximum size of "<< size << " has been created."<<endl;
 
     while(!done)
     {
@@ -138,6 +140,7 @@ void TestApp::enqueue()
         int number;
         cin>> number;
         intQueue->enqueue(number);//enqueue here a Queue class member function
+        cout << "The number '"<< number << "' has been added to the queue." << endl;
     }
 }
 
@@ -233,8 +236,6 @@ void TestApp::run()
                 break;
         }
     }
-
-
 }
 
 
