@@ -53,9 +53,9 @@ public:
     void withdrawFromAccount(string &accountnr, double amount);
     void depositToAccount(string &accountnr, double amount);
     void changeCredit(string &accountnr, double amount);
+    int getNrofAccounts();
 
 
 };
-
 
 #endif //BANK_SYSTEM1_CUSTOMER_H

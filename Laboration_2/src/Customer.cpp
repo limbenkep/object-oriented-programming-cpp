@@ -61,9 +61,11 @@ double Customer::getAccountBalance(const string &accountnr)
     {
         // found element. it is an iterator to the first matching element.
         // if you really need the index, you can also get it:
+        cout << "account found in getAccbalance" <<endl;
         auto index = std::distance(bankAccounts.begin(), it);
         return bankAccounts[index] ->getBalance();
     } else{
+        cout << "account Not found in getAccbalance" <<endl;
         return -1;
     }
 }
@@ -87,9 +89,9 @@ accountInfo Customer::getAccountInfo(string &accountnr)
     }
     else{
         data.sAccNr = "";
-        data.sBalance = 0;
-        data.sCredit = 0;
-        data.sUseable = 0;
+        data.sBalance = -1;
+        data.sCredit = -1;
+        data.sUseable = -1;
     }
     return data;
 }
@@ -111,8 +113,11 @@ void Customer::createAccount()
     if(n<maxSize)
     {
         string accNr = customerId + "_" + to_string(n);
-        bankAccounts.push_back(unique_ptr<Account>p(new Account(accNr) ));
+        bankAccounts.push_back(unique_ptr<Account>(new Account(accNr) ));
+        cout << "my accnr: " << bankAccounts[0]->getAccountNr() << endl;
+        cout << "Account number: " << accNr <<endl;
     }
+
 
 }
 
@@ -143,7 +148,7 @@ int Customer::getAccountIndex(const string &accountnr)
 void Customer::withdrawFromAccount(string &accountnr, double amount)
 {
     int index = getAccountIndex(accountnr);
-    if(index>0)
+    if(index>-1)
     {
         bankAccounts[index]->withdraw(amount);
     }
@@ -152,9 +157,12 @@ void Customer::withdrawFromAccount(string &accountnr, double amount)
 void Customer::depositToAccount(string &accountnr, double amount)
 {
     int index = getAccountIndex(accountnr);
-    if(index>0)
+    if(index>-1)
     {
         bankAccounts[index]->deposit(amount);
+    }
+    else {
+        cout << "account not found" <<endl;
     }
 
 }
@@ -162,9 +170,15 @@ void Customer::depositToAccount(string &accountnr, double amount)
 void Customer::changeCredit(string &accountnr, double amount)
 {
     int index = getAccountIndex(accountnr);
-    if(index>0)
+    cout<< "account index: "<<index<<endl;
+    if(index>-1)
     {
         bankAccounts[index]->setCredit(amount);
     }
+}
+
+int Customer::getNrofAccounts()
+{
+    return bankAccounts.size();
 }
 
