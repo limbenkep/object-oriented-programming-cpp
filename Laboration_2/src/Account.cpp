@@ -8,6 +8,11 @@ Account::Account(const string &accountNr) : accountNr(accountNr), balance(0), cr
 {
 }
 
+Account::Account(const string &accountNr, double balance, double credit) : accountNr(accountNr), balance(balance),
+                                                                           credit(credit)
+{
+}
+
 Account::~Account()
 {
 
@@ -55,4 +60,6 @@ double Account::getUseableAmount() const
 {
     return balance + credit;
 }
+
+
 

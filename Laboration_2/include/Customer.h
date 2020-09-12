@@ -16,8 +16,7 @@ class Customer
 {
 private:
     vector<unique_ptr<Account>>bankAccounts; //Vector with pointer to customer's accounts
-    string lastName;
-    string firstName;
+    string name;
     string customerId;
 
     const int maxSize = 3;
@@ -26,21 +25,18 @@ public:
     Customer();
 
 public:
-    Customer(const string &lastName, const string &firstName, const string &customerId);
+    Customer(const string &name, const string &customerId);
 
-    const string &getLastName() const;
+    const string &getName() const;
 
-    void setLastName(const string &lastName);
-
-    const string &getFirstName() const;
-
-    void setFirstName(const string &firstName);
+    void setName(const string &pName);
 
     const string &getCustomerId() const;
 
     void setCustomerId(const string &customerId);
 
     const vector<unique_ptr<Account>> &getBankAccounts() const;
+
 
     double getAccountBalance(const string &accountnr);
     accountInfo getAccountInfo(string &accountnr);
@@ -54,6 +50,8 @@ public:
     void depositToAccount(string &accountnr, double amount);
     void changeCredit(string &accountnr, double amount);
     int getNrofAccounts();
+    void saveToFile();
+    bool readFromFile();
 
 
 };

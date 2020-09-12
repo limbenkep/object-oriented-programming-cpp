@@ -6,6 +6,7 @@
 #define BANK_SYSTEM1_ACCOUNT_H
 
 #include <iostream>
+#include <fstream>
 #include <string>
 using namespace std;
 
@@ -18,6 +19,8 @@ private:
     double credit; //approved credit
 public:
     Account(const string &accountNr);
+
+    Account(const string &accountNr, double balance, double credit);
 
     virtual ~Account();
 

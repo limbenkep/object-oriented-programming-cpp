@@ -7,37 +7,25 @@
 
 Customer::Customer()
 {
-    firstName = "";
-    lastName = "";
+    name = "";
     customerId = "";
 }
 
-Customer::Customer(const string &pLastName, const string &pFirstName, const string &pCustomerId) : lastName(pLastName),
-                                                                                                firstName(pFirstName),
-                                                                                                customerId(pCustomerId)
+Customer::Customer(const string &pName, const string &pCustomerId) : name(pName), customerId(pCustomerId)
 {
 
 }
 
-const string &Customer::getLastName() const
+const string &Customer::getName() const
 {
-    return lastName;
+    return name;
 }
 
-void Customer::setLastName(const string &pLastName)
+void Customer::setName(const string &pName)
 {
-    Customer::lastName = pLastName;
+    Customer::name = pName;
 }
 
-const string &Customer::getFirstName() const
-{
-    return firstName;
-}
-
-void Customer::setFirstName(const string &pFirstName)
-{
-    Customer::firstName = pFirstName;
-}
 
 const string &Customer::getCustomerId() const
 {
@@ -181,4 +169,47 @@ int Customer::getNrofAccounts()
 {
     return bankAccounts.size();
 }
+
+void Customer::saveToFile()
+{
+    ofstream outFile(customerId + ".knt");
+    outFile << name << endl << customerId <<endl;
+    for(auto &idx: bankAccounts)
+    {
+        outFile<< idx->getAccountNr() << endl
+        <<idx->getBalance() << endl
+        <<idx->getCredit() << endl;
+
+    }
+    outFile.close();
+
+}
+
+bool Customer::readFromFile()
+{
+    string tmpAccNr;
+    double tmpBalance;
+    double tmpCredit;
+    ifstream inFile(customerId + ".knt");
+    if(inFile.is_open())
+    {
+        getline(inFile, name);
+        getline(inFile, customerId);
+        while (getline(inFile, tmpAccNr))
+        {
+            inFile>>tmpBalance;
+            inFile>>tmpCredit;
+            inFile.get();
+
+            bankAccounts.push_back(unique_ptr<Account>(new Account(tmpAccNr, tmpBalance, tmpCredit)));
+        }
+        inFile.close();
+        return true;
+
+    } else{
+        return false;
+    }
+}
+
+
 
