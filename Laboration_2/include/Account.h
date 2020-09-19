@@ -23,7 +23,7 @@ public:
      *
      * @param accountNr
      */
-    Account(const string &accountNr);
+    explicit Account(const string &accountNr);
 
     /**
      *
@@ -57,7 +57,7 @@ public:
 /*
  * receives a double as a parameter and subtract the double from balance to give new balance
  */
-    void withdraw(double amount);
+    bool withdraw(double amount);
 
 /*
  * returns the sum of credit and balance

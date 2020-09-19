@@ -5,11 +5,7 @@
 #include "Customer.h"
 
 
-Customer::Customer()
-{
-    name = "";
-    customerId = "";
-}
+
 
 Customer::Customer(const string &pName, const string &pCustomerId) : name(pName), customerId(pCustomerId)
 {
@@ -17,9 +13,7 @@ Customer::Customer(const string &pName, const string &pCustomerId) : name(pName)
 }
 
 Customer::~Customer()
-{
-
-}
+= default;
 
 
 const string &Customer::getName() const
@@ -66,26 +60,21 @@ double Customer::getAccountBalance(const string &accountnr)
 
 
 
-Account Customer::getAccountInfo(string &accountnr)
+bool Customer::getAccountInfo(string &accountnr, vector<double>&accountData)
 {
     auto it = find_if(bankAccounts.begin(), bankAccounts.end(), [&accountnr]( const unique_ptr<Account>& acc){return acc->getAccountNr() == accountnr;});
-    Account data;
+
     if (it != bankAccounts.end())
     {
-
         // found element. it is an iterator to the first matching element.
         // if you really need the index, you can also get it:
         auto index = std::distance(bankAccounts.begin(), it);
-        data = Account(bankAccounts[index] ->getAccountNr(),bankAccounts[index] ->getBalance(), bankAccounts[index] ->getCredit());
-/*
-        data.sAccNr = bankAccounts[index] ->getAccountNr();
-        data.sBalance = bankAccounts[index] ->getBalance();
-        data.sCredit = bankAccounts[index] ->getCredit();
-        data.sUseable = bankAccounts[index] ->getUseableAmount();
-*/
-
+        accountData.push_back(bankAccounts[index] ->getBalance());
+        accountData.push_back(bankAccounts[index] ->getCredit());
+        accountData.push_back(bankAccounts[index] ->getUseableAmount());
+        return true;
     }
-   return data;
+   return false;
 }
 
 double Customer::getTotalAsset()
@@ -99,7 +88,7 @@ double Customer::getTotalAsset()
     return asset;
 }
 
-void Customer::createAccount()
+bool Customer::createAccount()
 {
     int n = bankAccounts.size();
     if(n<maxSize)
@@ -108,12 +97,12 @@ void Customer::createAccount()
         bankAccounts.push_back(unique_ptr<Account>(new Account(accNr) ));
         cout << "my accnr: " << bankAccounts[0]->getAccountNr() << endl;
         cout << "Account number: " << accNr <<endl;
+        return true;
     }
-
-
+    return false;
 }
 
-void Customer::deleteAccount(string &accountnr)
+bool Customer::deleteAccount(string &accountnr)
 {
     //search through vector and if the an account with the given account number is found its iterator is returned.
     //If not found the iterator of the end of the vector is returned
@@ -122,7 +111,9 @@ void Customer::deleteAccount(string &accountnr)
     if (it != bankAccounts.end())//found element
     {
         bankAccounts.erase(it);
+        return true;
     }
+    return false;
 }
 
 int Customer::getAccountIndex(const string &accountnr)
@@ -137,36 +128,41 @@ int Customer::getAccountIndex(const string &accountnr)
     return index;
 }
 
-void Customer::withdrawFromAccount(string &accountnr, double amount)
+bool Customer::withdrawFromAccount(string &accountnr, double amount)
 {
     int index = getAccountIndex(accountnr);
     if(index>-1)
     {
-        bankAccounts[index]->withdraw(amount);
+        return bankAccounts[index]->withdraw(amount);
     }
+    return false;
 }
 
-void Customer::depositToAccount(string &accountnr, double amount)
+bool Customer::depositToAccount(string &accountnr, double amount)
 {
     int index = getAccountIndex(accountnr);
     if(index>-1)
     {
         bankAccounts[index]->deposit(amount);
+        return true;
     }
     else {
         cout << "account not found" <<endl;
+        return false;
     }
 
 }
 
-void Customer::changeCredit(string &accountnr, double amount)
+bool Customer::changeCredit(string &accountnr, double amount)
 {
     int index = getAccountIndex(accountnr);
     cout<< "account index: "<<index<<endl;
     if(index>-1)
     {
         bankAccounts[index]->setCredit(amount);
+        return true;
     }
+    return false;
 }
 
 int Customer::getNrofAccounts()
@@ -214,6 +210,70 @@ bool Customer::readFromFile()
         return false;
     }
 }
+
+bool Customer::getAccountNrs(vector<string> &accNrs) const
+{
+    if(bankAccounts.empty())
+    {
+        return false;
+    }
+    else{
+        for(const auto &idx:bankAccounts)
+        {
+            accNrs.push_back(idx->getAccountNr());
+        }
+        return true;
+    }
+
+}
+
+
+
+bool Customer::getSummary(vector<string> &accountNrs, vector<vector<double>> &summary)
+{
+    if(bankAccounts.empty())
+    {
+        return false;
+    }
+    else{
+        for(const auto &idx:bankAccounts)
+        {
+            accountNrs.push_back(idx->getAccountNr());
+            vector<double>accountData;
+            double temp;
+            temp = idx ->getBalance();
+            accountData.push_back(temp);
+            temp = idx ->getCredit();
+            accountData.push_back(temp);
+            temp = idx ->getUseableAmount();
+            accountData.push_back(temp);
+            summary.push_back(accountData);
+
+        }
+        return true;
+    }
+}
+
+bool Customer::useableSummary(vector<string> &accountNrs, vector<double> &summary)
+{
+    if(bankAccounts.empty())
+    {
+        return false;
+    }
+    else{
+        for(const auto &idx:bankAccounts)
+        {
+            accountNrs.push_back(idx->getAccountNr());
+            summary.push_back(idx->getUseableAmount());
+        }
+        return true;
+    }
+}
+
+
+
+
+
 
 
 

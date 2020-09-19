@@ -29,11 +29,11 @@ int main() {
     cout << "Assets: " <<cus.getTotalAsset() <<endl;
     //cus.deleteAccount(acc);
     cout << "Number of accounts: " << cus.getNrofAccounts() << endl;
-   Account data = cus.getAccountInfo(acc);
+   /*Account data = cus.getAccountInfo(acc);
     cout <<"acc nr: "<< data.getAccountNr() << endl;
     cout <<"acc useables: "<<data.getUseableAmount()<<endl;
     cout <<"acc nr: "<<data.getCredit() << endl;
-    cout << "acc balance: "<<data.getBalance()<<endl;
+    cout << "acc balance: "<<data.getBalance()<<endl;*/
     cus.createAccount();
     string acc1 = "11223344_1";
     cus.depositToAccount(acc1, 20);

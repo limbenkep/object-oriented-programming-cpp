@@ -44,15 +44,17 @@ void Account::deposit(double amount)
     balance += amount;
 }
 
-void Account::withdraw(double amount)
+bool Account::withdraw(double amount)
 {
     if(amount > getUseableAmount())
     {
         cout << "Attempting to withdraw more than available amount.\nAvailable amount: " << getUseableAmount() << endl;
+        return false;
     }
-    if(amount <= getUseableAmount())
+    else
     {
         balance -= amount;
+        return true;
     }
 }
 
