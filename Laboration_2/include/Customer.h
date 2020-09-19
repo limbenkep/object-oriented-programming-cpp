@@ -5,11 +5,20 @@
 #ifndef BANK_SYSTEM1_CUSTOMER_H
 #define BANK_SYSTEM1_CUSTOMER_H
 #include "Account.h"
-#include "Prototypes.h"
 #include <memory>
 #include <vector>
 #include <algorithm>
-
+/**
+ * This is a dummy prototype used only to enforce proper file structure,
+ * as Git doesn't allow empty folders to be pushed to remote origin.
+ * Remove this dummy function before submission.
+ */
+struct accountInfo {
+    string sAccNr;
+    double sBalance;
+    double sCredit;
+    double sUseable;
+};
 
 
 class Customer
@@ -23,9 +32,9 @@ private:
 
 public:
     Customer();
-
-public:
     Customer(const string &name, const string &customerId);
+
+    virtual ~Customer();
 
     const string &getName() const;
 
@@ -39,7 +48,7 @@ public:
 
 
     double getAccountBalance(const string &accountnr);
-    accountInfo getAccountInfo(string &accountnr);
+    Account getAccountInfo(string &accountnr);
     const double getAccountcredit(const string accountnr);
     const double getAccountuseable(const string accountnr);
     double getTotalAsset();

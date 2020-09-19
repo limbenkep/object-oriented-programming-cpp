@@ -13,7 +13,7 @@
  * then a  queue is created and the user then have 8 options, to create a new queue, Enqueue, Dequeue, Test if queue is
  * empty, Test if queue is full, Nr of elements in queue, Maximum size of queue  and Quit.
  */
-#include "Prototypes.h"
+
 #include "Queue.h"
 #include "memstat.hpp"
 #include "TestApp.h"

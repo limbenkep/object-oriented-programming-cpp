@@ -15,11 +15,22 @@ class Account
 {
 private:
     string accountNr; // bank account number
-    double balance; // current balance
-    double credit; //approved credit
+    double balance{}; // current balance
+    double credit{}; //approved credit
 public:
+    Account() = default;
+    /**
+     *
+     * @param accountNr
+     */
     Account(const string &accountNr);
 
+    /**
+     *
+     * @param accountNr
+     * @param balance
+     * @param credit
+     */
     Account(const string &accountNr, double balance, double credit);
 
     virtual ~Account();

@@ -4,7 +4,7 @@
 
 #include "Account.h"
 
-Account::Account(const string &accountNr) : accountNr(accountNr), balance(0), credit(0)
+Account::Account(const string &accountNr) : accountNr(accountNr)
 {
 }
 

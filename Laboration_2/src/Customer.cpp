@@ -16,6 +16,12 @@ Customer::Customer(const string &pName, const string &pCustomerId) : name(pName)
 
 }
 
+Customer::~Customer()
+{
+
+}
+
+
 const string &Customer::getName() const
 {
     return name;
@@ -60,28 +66,26 @@ double Customer::getAccountBalance(const string &accountnr)
 
 
 
-accountInfo Customer::getAccountInfo(string &accountnr)
+Account Customer::getAccountInfo(string &accountnr)
 {
-    auto it = find_if(bankAccounts.begin(), bankAccounts.end(), [&accountnr](const unique_ptr<Account>& acc){return acc->getAccountNr() == accountnr;});
-    accountInfo data;
+    auto it = find_if(bankAccounts.begin(), bankAccounts.end(), [&accountnr]( const unique_ptr<Account>& acc){return acc->getAccountNr() == accountnr;});
+    Account data;
     if (it != bankAccounts.end())
     {
+
         // found element. it is an iterator to the first matching element.
         // if you really need the index, you can also get it:
         auto index = std::distance(bankAccounts.begin(), it);
+        data = Account(bankAccounts[index] ->getAccountNr(),bankAccounts[index] ->getBalance(), bankAccounts[index] ->getCredit());
+/*
         data.sAccNr = bankAccounts[index] ->getAccountNr();
         data.sBalance = bankAccounts[index] ->getBalance();
         data.sCredit = bankAccounts[index] ->getCredit();
         data.sUseable = bankAccounts[index] ->getUseableAmount();
+*/
 
     }
-    else{
-        data.sAccNr = "";
-        data.sBalance = -1;
-        data.sCredit = -1;
-        data.sUseable = -1;
-    }
-    return data;
+   return data;
 }
 
 double Customer::getTotalAsset()
@@ -210,6 +214,7 @@ bool Customer::readFromFile()
         return false;
     }
 }
+
 
 
 

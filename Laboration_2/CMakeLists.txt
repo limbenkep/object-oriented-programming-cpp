@@ -14,7 +14,7 @@ include_directories(include)
 aux_source_directory(src/ SOURCES)
 
 # Create executable for the run configuration
-add_executable(${PROJECT_NAME}-Laboration_2 ${SOURCES} src/Account.cpp include/Account.h src/Customer.cpp include/Customer.h)
+add_executable(${PROJECT_NAME}-Laboration_2 ${SOURCES})
 
 # In order to avoid '../../../' semantics in include paths (relative), we need to add
 # target directory to the configuration

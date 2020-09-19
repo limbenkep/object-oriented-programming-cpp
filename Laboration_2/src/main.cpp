@@ -1,4 +1,3 @@
-#include "Prototypes.h"
 #include "memstat.hpp"
 #include "Account.h"
 #include "Customer.h"
@@ -18,7 +17,7 @@ int main() {
     cout<<"\n Account nr: " << account.getAccountNr() <<"\n Account balance: " << account.getBalance()
         <<"\n Account credit: "<< account.getCredit()<<"\n Account useable: " << account.getUseableAmount()
         << endl;*/
-    Customer cus("Honorine", "Lima", "11223344");
+    Customer cus("Honorine Lima", "11223344");
     cus.createAccount();
     cout << "Number of accounts: " << cus.getNrofAccounts() << endl;
     cout << "Assets: " <<cus.getTotalAsset() <<endl;
@@ -30,11 +29,11 @@ int main() {
     cout << "Assets: " <<cus.getTotalAsset() <<endl;
     //cus.deleteAccount(acc);
     cout << "Number of accounts: " << cus.getNrofAccounts() << endl;
-    accountInfo data = cus.getAccountInfo(acc);
-    cout <<"acc nr: "<< data.sAccNr << endl;
-    cout <<"acc useables: "<<data.sUseable <<endl;
-    cout <<"acc nr: "<<data.sCredit << endl;
-    cout << "acc balance: "<<data.sBalance<<endl;
+   Account data = cus.getAccountInfo(acc);
+    cout <<"acc nr: "<< data.getAccountNr() << endl;
+    cout <<"acc useables: "<<data.getUseableAmount()<<endl;
+    cout <<"acc nr: "<<data.getCredit() << endl;
+    cout << "acc balance: "<<data.getBalance()<<endl;
     cus.createAccount();
     string acc1 = "11223344_1";
     cus.depositToAccount(acc1, 20);
