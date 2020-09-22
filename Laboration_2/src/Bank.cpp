@@ -13,7 +13,7 @@ Bank::~Bank()
 
 }
 
-void Bank::createCustumer(const string &name, const string &persNr)
+void Bank::createCustumer(string &name, string &persNr)
 {
     client = unique_ptr<Customer>(new Customer(name, persNr));
 }

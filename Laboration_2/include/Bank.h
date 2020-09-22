@@ -15,7 +15,7 @@ public:
     Bank();
 
     virtual ~Bank();
-    void createCustumer(const string &name, const string &persNr);
+    void createCustumer(string &name, string &persNr);
     bool createNewAccount();
     bool getAccountNrs(vector<string>&vec)const ;
     bool deleteAnAccount(string &accountnr);

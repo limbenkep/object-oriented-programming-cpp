@@ -1,6 +1,8 @@
 #include "memstat.hpp"
-#include "Account.h"
+#include "Bank.h"
+#include "UserInterface.h"
 #include "Customer.h"
+
 
 int main() {
     /*Test program for account class
@@ -17,7 +19,14 @@ int main() {
     cout<<"\n Account nr: " << account.getAccountNr() <<"\n Account balance: " << account.getBalance()
         <<"\n Account credit: "<< account.getCredit()<<"\n Account useable: " << account.getUseableAmount()
         << endl;*/
-    Customer cus("Honorine Lima", "11223344");
+    unique_ptr<Bank> bank = unique_ptr<Bank>(new Bank);
+    //Bank bank;
+   /* string me ="me";
+    string you ="me";
+    bank->createCustumer(me, you);
+    cout << "\nName " <<bank->getClientName();*/
+
+    /*Customer cus("Honorine Lima", "11223344");
     cus.createAccount();
     cout << "Number of accounts: " << cus.getNrofAccounts() << endl;
     cout << "Assets: " <<cus.getTotalAsset() <<endl;
@@ -34,13 +43,15 @@ int main() {
     cout <<"acc useables: "<<data.getUseableAmount()<<endl;
     cout <<"acc nr: "<<data.getCredit() << endl;
     cout << "acc balance: "<<data.getBalance()<<endl;*/
-    cus.createAccount();
+   /* cus.createAccount();
     string acc1 = "11223344_1";
     cus.depositToAccount(acc1, 20);
     cout << "Assets: " <<cus.getTotalAsset()<<endl;
-    cout << "Number of accounts: " << cus.getNrofAccounts() << endl;
+    cout << "Number of accounts: " << cus.getNrofAccounts() << endl;*/
 
-
+    UserInterface test;
+    test.createNewClient();
+    test.printNrofAccounts();
 
 
     return 0;

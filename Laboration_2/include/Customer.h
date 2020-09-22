@@ -12,7 +12,7 @@
 class Customer
 {
 private:
-    vector<unique_ptr<Account>>bankAccounts{}; //Vector with pointer to customer's accounts
+    vector<unique_ptr<Account>>bankAccounts; //Vector with pointer to customer's accounts
     string name;
     string customerId;
 

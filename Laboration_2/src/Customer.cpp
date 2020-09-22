@@ -147,7 +147,7 @@ bool Customer::depositToAccount(string &accountnr, double amount)
         return true;
     }
     else {
-        cout << "account not found" <<endl;
+
         return false;
     }
 
