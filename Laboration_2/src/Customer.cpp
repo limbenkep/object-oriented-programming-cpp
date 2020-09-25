@@ -21,25 +21,9 @@ const string &Customer::getName() const
     return name;
 }
 
-void Customer::setName(const string &pName)
-{
-    Customer::name = pName;
-}
-
-
 const string &Customer::getCustomerId() const
 {
     return customerId;
-}
-
-void Customer::setCustomerId(const string &pCustomerId)
-{
-    Customer::customerId = pCustomerId;
-}
-
-const vector<unique_ptr<Account>> &Customer::getBankAccounts() const
-{
-    return bankAccounts;
 }
 
 double Customer::getAccountBalance(const string &accountnr)

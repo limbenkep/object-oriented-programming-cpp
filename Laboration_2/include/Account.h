@@ -18,23 +18,29 @@ private:
     double balance{}; // current balance
     double credit{}; //approved credit
 public:
+    //default construction
     Account() = default;
     /**
-     *
+     *overload constructor taking single parameter
      * @param accountNr
      */
     explicit Account(const string &accountNr);
 
     /**
-     *
+     *overload constructor taking three parameter
      * @param accountNr
      * @param balance
      * @param credit
      */
     Account(const string &accountNr, double balance, double credit);
-
+/**
+ * destructor
+ */
     virtual ~Account();
 
+/*
+* returns account number
+*/
     const string &getAccountNr() const;
 /*
 * returns current balance

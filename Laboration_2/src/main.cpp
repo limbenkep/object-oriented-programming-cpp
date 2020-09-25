@@ -49,10 +49,31 @@ int main() {
     cout << "Assets: " <<cus.getTotalAsset()<<endl;
     cout << "Number of accounts: " << cus.getNrofAccounts() << endl;*/
 
-    UserInterface test;
+    /*UserInterface test;
     test.createNewClient();
     test.printNrofAccounts();
+    test.createAccount();
+    test.printNrofAccounts();
+    test.depositToAccount();
+    test.printTotalAsset();
+    test.setCredit();
+    test.printTotalAsset();
+    test.withdrawfromAccount();
+    test.printTotalAsset();
+    test.createAccount();
+    test.depositToAccount();
+    test.printTotalAsset();
+    test.setCredit();
+    test.printAccountNrs();
+    test.printAccountInfo();
+    test.printAccountsSummary();
 
+
+    test.saveCustomerToFile();
+    test.readCustomerFromFile();*/
+
+    UserInterface test;
+    test.run();
 
     return 0;
 }
