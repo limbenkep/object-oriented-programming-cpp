@@ -1,3 +1,12 @@
+
+/*main.cpp
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_2
+* 2020-09-07.
+*/
+
+
 #include "memstat.hpp"
 #include "Bank.h"
 #include "UserInterface.h"

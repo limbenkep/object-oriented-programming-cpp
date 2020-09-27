@@ -1,6 +1,9 @@
-//
-// Created by limbe on 2020-09-19.
-//
+/*UserInterface.h
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_2
+* 2020-09-19.
+*/
 
 #ifndef BANK_SYSTEM1_USERINTERFACE_H
 #define BANK_SYSTEM1_USERINTERFACE_H
@@ -129,7 +132,7 @@ private:
     /**
      * allows user to press any key to continue.
      */
-    void nextKey()
+    void nextKey();
 
 public:
     UserInterface();

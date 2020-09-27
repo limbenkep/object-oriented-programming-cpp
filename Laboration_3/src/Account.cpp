@@ -5,6 +5,8 @@
 * DT060G_Laboration_2
 * 2020-09-27.
 */
+
+
 #include "Account.h"
 
 Account::Account(const string &accountNr) : accountNr(accountNr), balance(0)
@@ -37,5 +39,10 @@ bool Account::withdraw(int amount)
         balance -= amount;
         return true;
     }
+}
+
+void Account::setBalance(int amount)
+{
+    balance = amount;
 }
 

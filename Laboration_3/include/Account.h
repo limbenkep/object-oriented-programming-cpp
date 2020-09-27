@@ -8,7 +8,15 @@
 /**
  * The account class has data members
  */
-
+/**==========short description
+ * This class is an abstract class which will serve as a base for creating different account types.
+ * This class has data members account number and balance and have functions for managing the account
+ * class Account has a counstructor that take the account number abd a destructor and functions to;
+ * - get the account number, interest, type of account, credit, number of withdrawals, max number of withdrawals,
+ * - set credit and interest
+ * - deposit and withdraw from account
+ * The functions marked virtual will be implemented in the different account types
+ */
 
 #ifndef LABORATION_3_ACCOUNT_H
 #define LABORATION_3_ACCOUNT_H
@@ -67,7 +75,7 @@ public:
  * gets the type of account
  * @return different names depending on the account number
  */
-    virtual int getAccountType() const=0;
+    virtual string getAccountType() const=0;
 /*
  * returns the sum of credit and balance
  */
@@ -95,12 +103,14 @@ public:
 /*
  * receives a double and set the value as credit
  */
-    void setCredit(int pCredit) {};
+    virtual void setCredit(int pCredit) {};
 
 /**
  * setInterest
  */
     virtual void setInterest(int pInterest){};
+
+    void setBalance(int amount);
 
 //================Testers================================================================================================
 /**

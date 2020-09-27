@@ -1,6 +1,9 @@
-//
-// Created by limbe on 2020-09-07.
-//
+/*Customer.cpp
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_2
+* 2020-09-07.
+*/
 
 #include "Customer.h"
 

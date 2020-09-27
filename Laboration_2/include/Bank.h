@@ -1,6 +1,9 @@
-//
-// Created by limbe on 2020-09-19.
-//
+/*Bank.h
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_2
+* 2020-09-19.
+*/
 
 #ifndef BANK_SYSTEM1_BANK_H
 #define BANK_SYSTEM1_BANK_H

@@ -1,7 +1,9 @@
-//
-// Created by limbe on 2020-09-07.
-//
-
+/*Account.cpp
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_2
+* 2020-09-07.
+*/
 #include "Account.h"
 
 Account::Account(const string &accountNr) : accountNr(accountNr)
@@ -48,7 +50,6 @@ bool Account::withdraw(double amount)
 {
     if(amount > getUseableAmount())
     {
-        cout << "Attempting to withdraw more than available amount.\nAvailable amount: " << getUseableAmount() << endl;
         return false;
     }
     else
