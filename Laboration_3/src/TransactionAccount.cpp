@@ -4,7 +4,7 @@
 
 #include "TransactionAccount.h"
 
-TransactionAccount::TransactionAccount(const string &accountNr, int credit) : Account(accountNr), credit(credit)
+TransactionAccount::TransactionAccount(const string &accountNr, int pCredit) : Account(accountNr), credit(pCredit)
 {
 }
 

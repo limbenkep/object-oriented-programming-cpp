@@ -4,8 +4,8 @@
 
 #include "SavingsAccount.h"
 
-SavingsAccount::SavingsAccount(const string &accountNr, int n) : Account(accountNr), interestRate(n),
-nrOfWithdrawals(0)
+SavingsAccount::SavingsAccount(const string &accountNr, int rate, int n) : Account(accountNr), interestRate(rate),
+maxWithdrawals(n), nrOfWithdrawals(0)
 {
 }
 

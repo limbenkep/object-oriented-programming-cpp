@@ -2,22 +2,18 @@
 // Created by limbe on 2020-09-27.
 //
 
-#ifndef BANK_SYSTEM2_TRANSACTIONACCOUNT_H
-#define BANK_SYSTEM2_TRANSACTIONACCOUNT_H
-#include "Account.h"
+#ifndef BANK_SYSTEM2_LONGTERMSAVINGSACCOUNT_H
+#define BANK_SYSTEM2_LONGTERMSAVINGSACCOUNT_H
+#include "SavingsAccount.h"
 
 
-class TransactionAccount : public Account
+class LongTermSavingsAccount : public SavingsAccount
 {
-private:
-    int credit;
-
 public:
+    //SavingsAccount(const string &accountNr, int rate=2, int n=4 );
 
-    TransactionAccount(const string &accountNr, int pCredit=0);
-
-    virtual ~TransactionAccount();
-
+    //virtual ~SavingsAccount() {};
+    LongTermSavingsAccount(const string &accountNr, int rate=2, int n=1);
 
 /*
  * receives a double as a parameter and subtract the double from balance to give new balance
@@ -29,7 +25,7 @@ public:
 /*
 * returns current credit
 */
-    virtual int getCredit() const;
+    //virtual int getCredit() const;
 
 /**
  * gets the type of account
@@ -45,50 +41,50 @@ public:
  *
  * @return number of withdrawals
  */
-    //virtual int getNrOfWithdrawals() const;
+    virtual int getNrOfWithdrawals() const;
 
 /**
  *
  * @return the number of withdrawals that can be made for an account
  */
-    //virtual int getMaxWithdrawals() const;
+    virtual int getMaxWithdrawals() const;
 
 /**
  *
  * @return account interest
  */
-    //virtual int getInterest() const;
+    virtual int getInterest() const;
 
 //===========Setters====================================================================================================
 /*
  * receives a double and set the value as credit
  */
-    virtual void setCredit(int pCredit);
+    //virtual void setCredit(int pCredit);
 
 /**
- * setInterest
+ * sets the Interest rate with the given value
  */
-    //virtual void setInterest(int pInterest);
+    virtual void setInterest(int pInterest);
 
 //================Testers================================================================================================
 /**
  * test if account type has credit
  * @return true if it has else false
  */
-    virtual bool hasCredit() const {return true;};
+    virtual bool hasCredit() const {return false;};
 
 /**
   * test if account type has interest
  * @return true if it has else false
  */
-    virtual bool hasInterest() const {return false;};
+    virtual bool hasInterest() const {return true;};
 
 /**
   * test if account type has a maximum number of withdrawals
  * @return true if it has else false
  */
-    virtual bool hasMaxWithdrawals() {return false;};
+    virtual bool hasMaxWithdrawals() {return true;};
 };
 
 
-#endif //BANK_SYSTEM2_TRANSACTIONACCOUNT_H
+#endif //BANK_SYSTEM2_LONGTERMSAVINGSACCOUNT_H

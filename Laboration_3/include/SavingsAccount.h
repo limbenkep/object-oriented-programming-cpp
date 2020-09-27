@@ -12,10 +12,10 @@ class SavingsAccount : public Account
 private:
     int nrOfWithdrawals; // number of withdrawals done from account
     int interestRate; // interest rate is deposited amount in percentage
-    const int maxWithdrawals = 4; // maximum number of withdrawals that can be done
+    int maxWithdrawals = 4; // maximum number of withdrawals that can be done
 
 public:
-    SavingsAccount(const string &accountNr, int n=2);
+    SavingsAccount(const string &accountNr, int rate=2, int n=4 );
 
     virtual ~SavingsAccount() {};
 
