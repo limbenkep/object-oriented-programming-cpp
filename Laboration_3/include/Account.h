@@ -33,8 +33,6 @@ private:
     string accountNr; // bank account number
     int balance{}; // current balance
 public:
-    //default construction
-    Account() = default;
     /**
      *overload constructor taking single parameter
      * @param accountNr

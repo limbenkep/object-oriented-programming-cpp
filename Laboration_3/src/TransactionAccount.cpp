@@ -49,19 +49,5 @@ void TransactionAccount::setCredit(int pCredit)
     credit = pCredit;
 }
 
-bool TransactionAccount::hasCredit() const
-{
-    return true;
-}
-
-bool TransactionAccount::hasInterest() const
-{
-    return false;
-}
-
-bool TransactionAccount::hasMaxWithdrawals()
-{
-    return false;
-}
 
 
