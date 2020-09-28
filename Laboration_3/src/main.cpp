@@ -1,7 +1,9 @@
-#include "Prototypes.h"
+
 #include "memstat.hpp"
+#include "UserInterface.h"
 
 int main() {
-    assignmentFunction();
+    UserInterface test;
+    test.run();
     return 0;
 }

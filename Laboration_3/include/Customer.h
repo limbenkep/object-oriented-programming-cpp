@@ -37,6 +37,7 @@ public:
      * @return customer id
      */
     const string &getCustomerId() const;
+    string getAccountType(const string &accountnr);
 /**
  * gets the account balance of a given account
  * @param accountnr, an account number
@@ -75,12 +76,25 @@ public:
     int getTotalAsset();
 
     /**
-     * creates a new account for current customer
+     * receives account type passed as an integer and creates a new account of that type for current customer
+     * @param accType
      * @return false if the customer already have max number of account else true
      */
-    bool createAccount();
+    bool createAccount(int accType);
+    /*
+     *creates a new transaction account for current customer
+     * @return false if the customer already have max number of account else true
+     */
     bool createTransactionAccount();
+    /*
+     *creates a new savings account for current customer
+     * @return false if the customer already have max number of account else true
+     */
     bool createSavingsAccount();
+    /*
+     *creates a new long term savings account for current customer
+     * @return false if the customer already have max number of account else true
+     */
     bool createLongSavingsAccount();
 
     /**

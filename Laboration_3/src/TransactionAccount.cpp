@@ -36,7 +36,7 @@ int TransactionAccount::getCredit() const
 
 string TransactionAccount::getAccountType() const
 {
-    return "transaction";
+    return accType;
 }
 
 int TransactionAccount::getUseableAmount() const

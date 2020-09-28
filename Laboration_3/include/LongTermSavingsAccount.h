@@ -9,6 +9,9 @@
 
 class LongTermSavingsAccount : public SavingsAccount
 {
+private:
+    const string accType = "Long term savings Account";
+
 public:
     //SavingsAccount(const string &accountNr, int rate=2, int n=4 );
 

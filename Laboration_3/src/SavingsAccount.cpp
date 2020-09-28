@@ -27,7 +27,7 @@ bool SavingsAccount::withdraw(int amount)
 
 string SavingsAccount::getAccountType() const
 {
-    return "savings";
+    return accType;
 }
 
 int SavingsAccount::getUseableAmount() const

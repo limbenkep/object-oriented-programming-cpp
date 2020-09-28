@@ -17,7 +17,7 @@ bool LongTermSavingsAccount::withdraw(int amount)
 
 string LongTermSavingsAccount::getAccountType() const
 {
-    return "Long terms savings account";
+    return accType;
 }
 
 int LongTermSavingsAccount::getUseableAmount() const

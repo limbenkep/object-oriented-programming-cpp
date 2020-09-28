@@ -11,6 +11,7 @@ class TransactionAccount : public Account
 {
 private:
     int credit;
+    const string accType = "Transaction Account";
 
 public:
 

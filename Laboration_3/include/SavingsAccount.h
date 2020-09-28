@@ -13,6 +13,7 @@ private:
     int nrOfWithdrawals; // number of withdrawals done from account
     int interestRate; // interest rate is deposited amount in percentage
     int maxWithdrawals = 4; // maximum number of withdrawals that can be done
+    const string accType = "Savings Account";
 
 public:
     SavingsAccount(const string &accountNr, int rate=2, int n=4 );

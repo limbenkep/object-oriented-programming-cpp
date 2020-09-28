@@ -68,6 +68,27 @@ int Customer::getTotalAsset()
     }
     return asset;
 }
+bool Customer::createAccount(int accType)
+{
+    if(accType==1)
+    {
+        return createTransactionAccount();
+    }
+    else if(accType==2)
+    {
+        return createSavingsAccount();
+    }
+    else if(accType==3)
+    {
+        return createLongSavingsAccount();
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
 
 bool Customer::createSavingsAccount()
 {
@@ -195,7 +216,7 @@ void Customer::saveToFile()
 
 bool Customer::readFromFile()
 {
-    string tmpAccNr;
+   /* string tmpAccNr;
     double tmpBalance;
     double tmpCredit;
     ifstream inFile(customerId + ".knt");
@@ -216,7 +237,8 @@ bool Customer::readFromFile()
 
     } else{
         return false;
-    }
+    }*/
+    return false;
 }
 
 bool Customer::getAccountNrs(vector<string> &accNrs) const
@@ -276,3 +298,15 @@ bool Customer::useableSummary(vector<string> &accountNrs, vector<int> &summary)
         return true;
     }
 }
+
+string Customer::getAccountType(const string &accountnr)
+{
+    int index = getAccountIndex(accountnr);
+    cout<< "account index: "<<index<<endl;
+    if(index>-1)
+    {
+        return bankAccounts[index]->getAccountType();
+    }
+    return "error";
+}
+
