@@ -100,7 +100,7 @@ public:
     /**
      * receives an account nuber and returns the index of the corresponding account in the vector bankAccounts
      */
-    int getAccountIndex(const string &accountnr);
+    int getAccountIndex(const string &accountnr) const;
 
     /**
      * deletes a given account
@@ -155,6 +155,25 @@ public:
      * @return false if file not read
      */
     bool readFromFile();
+//================Testers================================================================================================
+/**
+ * test if account type has credit
+ * @return true if it has else false
+ */
+   bool hasCredit(string &accountNr) const;
+
+/**
+  * test if account type has interest
+ * @return true if it has else false
+ */
+   bool hasInterest(string &accountNr) const;
+
+/**
+  * test if account type has a maximum number of withdrawals
+ * @return true if it has else false
+ */
+    bool hasMaxWithdrawals(string &accountNr);
+
 };
 
 

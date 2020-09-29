@@ -145,7 +145,7 @@ bool Customer::deleteAccount(string &accountnr)
     return false;
 }
 
-int Customer::getAccountIndex(const string &accountnr)
+int Customer::getAccountIndex(const string &accountnr) const
 {
     auto it = find_if(bankAccounts.begin(), bankAccounts.end(), [&accountnr](const unique_ptr<Account>& acc){return acc->getAccountNr() == accountnr;});
     auto index  = -1;
@@ -308,5 +308,44 @@ string Customer::getAccountType(const string &accountnr)
         return bankAccounts[index]->getAccountType();
     }
     return "error";
+}
+
+bool Customer::hasCredit(string &accountNr) const
+{
+    int index = getAccountIndex(accountNr);
+    if(index>-1)
+    {
+        return bankAccounts[index]->hasCredit();
+    }
+    else {
+
+        return false;
+    }
+}
+
+bool Customer::hasInterest(string &accountNr) const
+{
+    int index = getAccountIndex(accountNr);
+    if(index>-1)
+    {
+        return bankAccounts[index]->hasInterest();
+    }
+    else {
+
+        return false;
+    }
+}
+
+bool Customer::hasMaxWithdrawals(string &accountNr)
+{
+    int index = getAccountIndex(accountNr);
+    if(index>-1)
+    {
+        return bankAccounts[index]->hasMaxWithdrawals();
+    }
+    else {
+
+        return false;
+    }
 }
 
