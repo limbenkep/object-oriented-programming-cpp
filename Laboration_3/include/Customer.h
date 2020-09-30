@@ -123,7 +123,7 @@ public:
      * @param amount
      * @return true if account with given account number is found else false
      */
-    bool depositToAccount(string &accountnr, int amount);
+    void depositToAccount(string &accountnr, int amount);
 
     /**
      * set credit to a given amount for a given account
@@ -155,6 +155,27 @@ public:
      * @return false if file not read
      */
     bool readFromFile();
+    /**
+     * receives an account number and check if an account number existwith that number
+     * @param accountNr
+     * @return true if account is found else false
+     */
+    bool accountExist(string &accountNr) const;
+    /**
+     * returns the interest rate of an account
+     */
+    int getInterest(string &accountNr) const;
+    /**
+ *
+ * @return number of withdrawals
+ */
+    int getNrOfWithdrawals(string &accountNr) const;
+
+/**
+ *
+ * @return the number of withdrawals that can be made for an account
+ */
+    int getMaxWithdrawals(string &accountNr) const;
 //================Testers================================================================================================
 /**
  * test if account type has credit

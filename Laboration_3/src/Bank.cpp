@@ -69,7 +69,7 @@ bool Bank::withdraw(string &accountnr, int amount)
     return client ->withdrawFromAccount(accountnr, amount);
 }
 
-bool Bank::deposit(string &accountnr, int amount)
+void Bank::deposit(string &accountnr, int amount)
 {
     return client->depositToAccount(accountnr, amount);
 
@@ -100,5 +100,40 @@ bool Bank::accountsUseables(vector<string> &accountNrs, vector<int> &summary)
 string Bank::getAccType(string &accountNr)
 {
     return client->getAccountType(accountNr);
+}
+
+bool Bank::accountExist(string &accountNr) const
+{
+    return client->accountExist(accountNr);
+}
+
+bool Bank::hasCredit(string &accountNr) const
+{
+    return client->hasCredit(accountNr);
+}
+
+bool Bank::hasInterest(string &accountNr) const
+{
+    return client->hasInterest(accountNr);
+}
+
+bool Bank::hasMaxWithdrawals(string &accountNr)
+{
+    return client->hasMaxWithdrawals(accountNr);
+}
+
+int Bank::getInterest(string &accountNr) const
+{
+    return client->getInterest(accountNr);
+}
+
+int Bank::getNrOfWithdrawals(string &accountNr) const
+{
+    return client->getNrOfWithdrawals(accountNr);
+}
+
+int Bank::getMaxWithdrawals(string &accountNr) const
+{
+    return client->getMaxWithdrawals(accountNr);
 }
 

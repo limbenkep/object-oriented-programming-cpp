@@ -25,37 +25,19 @@ const string &Customer::getCustomerId() const
 
 int Customer::getAccountBalance(const string &accountnr)
 {
-    auto it = find_if(bankAccounts.begin(), bankAccounts.end(), [&accountnr](const unique_ptr<Account>& acc){return acc->getAccountNr() == accountnr;});
-    if (it != bankAccounts.end())
-    {
-        // found element. it is an iterator to the first matching element.
-        // if you really need the index, you can also get it:
-        cout << "account found in getAccbalance" <<endl;
-        auto index = std::distance(bankAccounts.begin(), it);
-        return bankAccounts[index] ->getBalance();
-    } else{
-        cout << "account Not found in getAccbalance" <<endl;
-        return -1;
-    }
+    int index = getAccountIndex(accountnr);
+    return bankAccounts[index] ->getBalance();
 }
 
 
 
 bool Customer::getAccountInfo(string &accountnr, vector<int>&accountData)
 {
-    auto it = find_if(bankAccounts.begin(), bankAccounts.end(), [&accountnr]( const unique_ptr<Account>& acc){return acc->getAccountNr() == accountnr;});
-
-    if (it != bankAccounts.end())
-    {
-        // found element. it is an iterator to the first matching element.
-        // if you really need the index, you can also get it:
-        auto index = std::distance(bankAccounts.begin(), it);
-        accountData.push_back(bankAccounts[index] ->getBalance());
-        accountData.push_back(bankAccounts[index] ->getCredit());
-        accountData.push_back(bankAccounts[index] ->getUseableAmount());
-        return true;
-    }
-    return false;
+    int index = getAccountIndex(accountnr);
+    accountData.push_back(bankAccounts[index] ->getBalance());
+    accountData.push_back(bankAccounts[index] ->getCredit());
+    accountData.push_back(bankAccounts[index] ->getUseableAmount());
+    return true;
 }
 
 int Customer::getTotalAsset()
@@ -160,33 +142,20 @@ int Customer::getAccountIndex(const string &accountnr) const
 bool Customer::withdrawFromAccount(string &accountnr, int amount)
 {
     int index = getAccountIndex(accountnr);
-    if(index>-1)
-    {
-        return bankAccounts[index]->withdraw(amount);
-    }
-    return false;
+    return bankAccounts[index]->withdraw(amount);
 }
 
-bool Customer::depositToAccount(string &accountnr, int amount)
+void Customer::depositToAccount(string &accountnr, int amount)
 {
     int index = getAccountIndex(accountnr);
-    if(index>-1)
-    {
-        bankAccounts[index]->deposit(amount);
-        return true;
-    }
-    else {
-
-        return false;
-    }
-
+    bankAccounts[index]->deposit(amount);
 }
 
 bool Customer::changeCredit(string &accountnr, int amount)
 {
     int index = getAccountIndex(accountnr);
     cout<< "account index: "<<index<<endl;
-    if(index>-1)
+    if(hasCredit(accountnr))
     {
         bankAccounts[index]->setCredit(amount);
         return true;
@@ -302,33 +271,33 @@ bool Customer::useableSummary(vector<string> &accountNrs, vector<int> &summary)
 string Customer::getAccountType(const string &accountnr)
 {
     int index = getAccountIndex(accountnr);
-    cout<< "account index: "<<index<<endl;
-    if(index>-1)
-    {
-        return bankAccounts[index]->getAccountType();
-    }
-    return "error";
+    return bankAccounts[index]->getAccountType();
 }
 
 bool Customer::hasCredit(string &accountNr) const
 {
     int index = getAccountIndex(accountNr);
-    if(index>-1)
-    {
-        return bankAccounts[index]->hasCredit();
-    }
-    else {
-
-        return false;
-    }
+    return bankAccounts[index]->hasCredit();
 }
 
 bool Customer::hasInterest(string &accountNr) const
 {
     int index = getAccountIndex(accountNr);
+    return bankAccounts[index]->hasInterest();
+}
+
+bool Customer::hasMaxWithdrawals(string &accountNr)
+{
+    int index = getAccountIndex(accountNr);
+    return bankAccounts[index]->hasMaxWithdrawals();
+}
+
+bool Customer::accountExist(string &accountNr) const
+{
+    int index = getAccountIndex(accountNr);
     if(index>-1)
     {
-        return bankAccounts[index]->hasInterest();
+        return true;
     }
     else {
 
@@ -336,16 +305,26 @@ bool Customer::hasInterest(string &accountNr) const
     }
 }
 
-bool Customer::hasMaxWithdrawals(string &accountNr)
+int Customer::getInterest(string &accountNr) const
 {
     int index = getAccountIndex(accountNr);
-    if(index>-1)
+    if(bankAccounts[index]->hasInterest())
     {
-        return bankAccounts[index]->hasMaxWithdrawals();
-    }
-    else {
+        return bankAccounts[index]->getInterest();
 
-        return false;
     }
+    return 0;
+}
+
+int Customer::getNrOfWithdrawals(string &accountNr) const
+{
+    int index = getAccountIndex(accountNr);
+    return bankAccounts[index]->getNrOfWithdrawals();
+}
+
+int Customer::getMaxWithdrawals(string &accountNr) const
+{
+    int index = getAccountIndex(accountNr);
+    return bankAccounts[index]->getMaxWithdrawals();
 }
 

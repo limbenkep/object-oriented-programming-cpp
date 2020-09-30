@@ -116,20 +116,54 @@ private:
     /**
      * prints start menu
      */
-    void printStartMenu();
+    static void printStartMenu();
     /**
      * prints options menu
      */
-    void printMenu();
+    static void printMenu();
 
     /**
      * executes different menu options
      */
     void executeMenuOptions();
     /**
+ * returns the interest rate of an account
+ */
+    int getInterest(string &accountNr) const;
+    /**
+ *
+ * @return number of withdrawals
+ */
+    int getNrOfWithdrawals(string &accountNr) const;
+
+/**
+ *
+ * @return the number of withdrawals that can be made for an account
+ */
+    int getMaxWithdrawals(string &accountNr) const;
+    /**
      * allows user to press any key to continue.
      */
-    void nextKey();
+    static void nextKey();
+//================Testers================================================================================================
+/**
+ * test if account type has credit
+ * @return true if it has else false
+ */
+    bool hasCredit(string &accountNr) const;
+
+/**
+  * test if account type has interest
+ * @return true if it has else false
+ */
+    bool hasInterest(string &accountNr) const;
+
+/**
+  * test if account type has a maximum number of withdrawals
+ * @return true if it has else false
+ */
+    bool hasMaxWithdrawals(string &accountNr);
+
 
 public:
     UserInterface();
