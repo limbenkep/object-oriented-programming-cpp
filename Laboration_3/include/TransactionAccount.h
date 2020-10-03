@@ -1,6 +1,14 @@
-//
-// Created by limbe on 2020-09-27.
-//
+/*TransactionAccount.h
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_3
+* 2020-09-27.
+ *
+ * ===========short description================
+ * The Transaction account can get a credit approved, no maximum withdrawals and no interest.
+ * The account keeps track of  balance and credit and
+ * has class specific implementations of account functions.
+*/
 
 #ifndef BANK_SYSTEM2_TRANSACTIONACCOUNT_H
 #define BANK_SYSTEM2_TRANSACTIONACCOUNT_H

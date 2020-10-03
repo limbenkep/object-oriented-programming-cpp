@@ -1,6 +1,13 @@
-//
-// Created by limbe on 2020-09-28.
-//
+/*UserInterface.h
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_3
+* 2020-09-27.
+ *
+ * incteraction class with the user that allows user to
+ * execute the different menu options. Receives request from user and call functions throuh the back class to execute
+ * the function.
+*/
 
 #ifndef BANK_SYSTEM2_USERINTERFACE_H
 #define BANK_SYSTEM2_USERINTERFACE_H

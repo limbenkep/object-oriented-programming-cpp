@@ -1,6 +1,15 @@
-//
-// Created by limbe on 2020-09-27.
-//
+/*Customer.h
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_3
+* 2020-09-27.
+*/
+/**============short description=================================
+ * custmer holds information about a customer name, personal number and it's accounts. A customer can have a maximum of
+ * three accounts and the can be of any of the three types; transactions account, savings account and longterm savings
+ * account. Customer has functions ot manage it's accounts as well as share customer information.
+ *
+ */
 
 #ifndef BANK_SYSTEM2_CUSTOMER_H
 #define BANK_SYSTEM2_CUSTOMER_H

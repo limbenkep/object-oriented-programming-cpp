@@ -1,6 +1,9 @@
-//
-// Created by limbe on 2020-09-28.
-//
+/*UserInterface.cpp
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_3
+* 2020-09-27.
+*/
 
 #include "UserInterface.h"
 

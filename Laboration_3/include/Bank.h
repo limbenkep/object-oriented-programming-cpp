@@ -1,6 +1,12 @@
-//
-// Created by limbe on 2020-09-28.
-//
+/*Bank.h
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_3
+* 2020-09-27.
+*/
+/**=======short description
+ * Bank class has a pointer pointer to a customer as a parameter and manages one customer at a time.
+ */
 
 #ifndef BANK_SYSTEM2_BANK_H
 #define BANK_SYSTEM2_BANK_H

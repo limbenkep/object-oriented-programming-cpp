@@ -1,6 +1,14 @@
-//
-// Created by limbe on 2020-09-27.
-//
+/*SavingsAccount.h
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_3
+* 2020-09-27.
+ *
+ * ===========short description================
+ * The savings account have no credit, max 4 withdrawal and a current interest rate of 2%.
+ * The account keeps track of balance, interest and the number of withdrawals per year(years not implemented
+ * in this project) has class specific implementations of account functions.
+*/
 
 #ifndef BANK_SYSTEM2_SAVINGSACCOUNT_H
 #define BANK_SYSTEM2_SAVINGSACCOUNT_H

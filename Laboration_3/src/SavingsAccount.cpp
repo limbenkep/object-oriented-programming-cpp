@@ -1,6 +1,8 @@
-//
-// Created by limbe on 2020-09-27.
-//
+/*SavingsAccount.cpp
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_3
+* 2020-09-27.
 
 #include "SavingsAccount.h"
 

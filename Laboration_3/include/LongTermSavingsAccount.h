@@ -1,6 +1,14 @@
-//
-// Created by limbe on 2020-09-27.
-//
+/*LongTermSavingsAccount.h
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_3
+* 2020-09-27.
+ *
+ * ===========short description================
+ * The longterm savings account have no credit, max 1 withdrawal and an interest rate double that of the savings account.
+ * The account keeps track of the balance, number of withdrawals per year(years not implemented in this project)
+ * has class specific implementations of account functions.
+*/
 
 #ifndef BANK_SYSTEM2_LONGTERMSAVINGSACCOUNT_H
 #define BANK_SYSTEM2_LONGTERMSAVINGSACCOUNT_H

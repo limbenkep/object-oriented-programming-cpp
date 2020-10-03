@@ -17,7 +17,15 @@
  * - deposit and withdraw from account
  * The functions marked virtual will be implemented in the different account types
  */
-
+/*Account.h
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_2
+* 2020-09-27.
+*/
+/**
+ * The account class is an abstract class that serves as a bas for the classes of the different account types
+ */
 #ifndef LABORATION_3_ACCOUNT_H
 #define LABORATION_3_ACCOUNT_H
 
