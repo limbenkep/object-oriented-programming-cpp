@@ -24,6 +24,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 
@@ -37,7 +39,7 @@ public:
      *overload constructor taking single parameter
      * @param accountNr
      */
-    explicit Account(const string &accountNr);
+    Account(const string &accountNr);
 
 
 /**
@@ -55,6 +57,9 @@ public:
  */
     virtual bool withdraw(int amount);
 
+    virtual void saveToFile(ofstream &outFile) = 0;
+
+    //virtual void readFromFile(ostream &inFile) = 0;
 //=================Getters==============================================================================================
 /*
 * returns account number
@@ -96,6 +101,7 @@ public:
  * @return account interest
  */
     virtual int getInterest() const {return 0;};
+    virtual void getAccountSummary(vector<string> &vec) {};
 
 //===========Setters====================================================================================================
 /*
@@ -110,23 +116,28 @@ public:
 
     void setBalance(int amount);
 
+    /*
+ * receives a an  int and set the value as number of withdrawals
+ */
+    virtual void setNrOfWithdrawals(int pNrOfWithdrawals){};
+
 //================Testers================================================================================================
 /**
  * test if account type has credit
  * @return true if it has else false
  */
-    virtual bool hasCredit() const {return false;};
+    virtual bool hasCredit() const =0;
 
 /**
   * test if account type has interest
  * @return true if it has else false
  */
-    virtual bool hasInterest() const {return false;};
+    virtual bool hasInterest() const =0;
 
 /**
   * test if account type has a maximum number of withdrawals
  * @return true if it has else false
  */
-    virtual bool hasMaxWithdrawals() const {return false;};
+    virtual bool hasMaxWithdrawals() const =0;
 };
 #endif //LABORATION_3_ACCOUNT_H

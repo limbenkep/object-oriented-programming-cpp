@@ -12,11 +12,11 @@ class SavingsAccount : public Account
 private:
     int nrOfWithdrawals; // number of withdrawals done from account
     int interestRate; // interest rate is deposited amount in percentage
-    int maxWithdrawals = 4; // maximum number of withdrawals that can be done
+    int maxWithdrawals; // maximum number of withdrawals that can be done
     const string accType = "Savings Account";
 
 public:
-    SavingsAccount(const string &accountNr, int rate=2, int n=4 );
+    explicit SavingsAccount(const string &accountNr, int rate=2, int n=4 );
 
     virtual ~SavingsAccount() {};
 
@@ -25,6 +25,9 @@ public:
  * receives a double as a parameter and subtract the double from balance to give new balance
  */
     virtual bool withdraw(int amount);
+
+    void saveToFile(ofstream &outFile) override;
+
 
 //=================Getters==============================================================================================
 
@@ -60,12 +63,17 @@ public:
  * @return account interest
  */
     virtual int getInterest() const;
+/**
+ * returns the account summary in a vector of strings passed by reference
+ * @param vec
+ */
+    virtual void getAccountSummary(vector<string> &vec);
 
 //===========Setters====================================================================================================
 /*
- * receives a double and set the value as credit
+ * receives a an  int and set the value as number of withdrawals
  */
-    //virtual void setCredit(int pCredit);
+    virtual void setNrOfWithdrawals(int pNrOfWithdrawals);
 
 /**
  * sets the Interest rate with the given value
@@ -77,19 +85,19 @@ public:
  * test if account type has credit
  * @return true if it has else false
  */
-    virtual bool hasCredit() const {return false;};
+    virtual bool hasCredit() const override {return false;};
 
 /**
   * test if account type has interest
  * @return true if it has else false
  */
-    virtual bool hasInterest() const {return true;};
+    virtual bool hasInterest()  const override {return true;};
 
 /**
   * test if account type has a maximum number of withdrawals
  * @return true if it has else false
  */
-    virtual bool hasMaxWithdrawals() {return true;};
+    virtual bool hasMaxWithdrawals() const override {return true;};
 };
 
 

@@ -9,8 +9,11 @@
 class Bank
 {
 private:
-    unique_ptr<Customer>client;//unique pointer to a customer that will hold current customer
-
+    unique_ptr<Customer> client;//unique pointer to a customer that will hold current customer
+    /**
+     * function deletes the customer object and resets client pointer to a null_ptr
+     */
+    void destroyCustomer();
 public:
 
     /**
@@ -75,7 +78,7 @@ public:
      * @param accountData
      * @return return true if the aacount number received if found else false
      */
-    bool accountInfo(string &accountnr, vector<int>&accountData);
+    bool accountInfo(string &accountnr, vector<string>&accountData);
 
     /**
      * This function gets the summary of all the accounts owned by the customer; account numbers, balance, disposable
@@ -85,6 +88,14 @@ public:
      * @return false if client has no accunts else true.
      */
     bool clientSummery(vector<string> &accountNrs, vector<vector<int>>&summary);
+
+    /**
+    * gets the account info for each account owned by the customer stored in a vector of strings containing complete
+     * information ready to print, and to all of the individual account vectors are stored in a vector.
+    * @param summary
+    * @return false if customer has no accounts else true
+    */
+    bool getSummaryToPrint(vector<vector<string>> &summary);
 
     /**
      * gets useables for each account for all customer's account
@@ -139,7 +150,7 @@ public:
      * reads client from a file
      * @return true if file is successfully found and  read else false
      */
-    bool readClientFromFile();
+    bool readClientFromFile(const string &personalNumber);
     /**
      * receives an account number and check if an account number existwith that number
      * @param accountNr

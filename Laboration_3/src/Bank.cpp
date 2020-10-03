@@ -6,6 +6,7 @@
 
 Bank::Bank()
 {
+   // client = unique_ptr<Customer>();
 }
 
 Bank::~Bank()
@@ -41,17 +42,17 @@ int Bank::totalAsset()
 
 int Bank::NrofAccounts()
 {
-    return client ->getNrofAccounts();
+    return client->getNrofAccounts();
 }
 
-bool Bank::accountInfo(string &accountnr, vector<int> &accountData)
+bool Bank::accountInfo(string &accountnr, vector<string> &accountData)
 {
     return client->getAccountInfo(accountnr, accountData);
 }
 
 bool Bank::clientSummery(vector<string> &accountNrs, vector<vector<int>> &summary)
 {
-    return client->getSummary(accountNrs,summary);
+    return client->getSummary(accountNrs, summary);
 }
 
 string Bank::getClientName()
@@ -66,7 +67,7 @@ string Bank::getClientID()
 
 bool Bank::withdraw(string &accountnr, int amount)
 {
-    return client ->withdrawFromAccount(accountnr, amount);
+    return client->withdrawFromAccount(accountnr, amount);
 }
 
 void Bank::deposit(string &accountnr, int amount)
@@ -83,13 +84,16 @@ bool Bank::changeAccCredit(string &accountnr, int amount)
 
 void Bank::saveClientToFile()
 {
-    client ->saveToFile();
-
+    client->saveToFile();
+    destroyCustomer();
 }
 
-bool Bank::readClientFromFile()
+bool Bank::readClientFromFile(const string &personalNumber)
 {
-    return client->readFromFile();
+    if(client== nullptr){
+        client = unique_ptr<Customer>(new Customer);
+    }
+    return client->readFromFile(personalNumber);
 }
 
 bool Bank::accountsUseables(vector<string> &accountNrs, vector<int> &summary)
@@ -135,5 +139,17 @@ int Bank::getNrOfWithdrawals(string &accountNr) const
 int Bank::getMaxWithdrawals(string &accountNr) const
 {
     return client->getMaxWithdrawals(accountNr);
+}
+
+bool Bank::getSummaryToPrint(vector<vector<string>> &summary)
+{
+    return client->getSummaryToPrint(summary);
+}
+
+void Bank::destroyCustomer()
+{
+    if(client != nullptr){
+       client.reset();
+    }
 }
 

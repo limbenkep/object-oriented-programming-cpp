@@ -22,7 +22,7 @@ private:
     const int maxSize = 3;
 
 public:
-    Customer() =default;
+    Customer()= default;
     Customer(const string &name, const string &customerId);
 
     virtual ~Customer();
@@ -51,7 +51,7 @@ public:
      * @param accountData; vector passed by reference to which balance, credit and useables is stored
      * @return true if account with given account number is found else false
      */
-    bool getAccountInfo(string &accountnr, vector<int>&accountData);
+    bool getAccountInfo(string &accountnr, vector<string>&accountData);
 
     /**
      * gets balance, credit and useables for all accounts
@@ -60,6 +60,14 @@ public:
      * @return false if customer has no accounts else true
      */
     bool getSummary(vector<string> &accountNrs, vector<vector<int>>&summary);
+
+    /**
+    * gets the account info for each account owned by the customer stored in a vector of strings containing complete
+     * information ready to print
+    * @param summary
+    * @return false if customer has no accounts else true
+    */
+    bool getSummaryToPrint(vector<vector<string>> &summary);
 
     /**
      * gets useables for all accounts
@@ -154,7 +162,7 @@ public:
      * read client from file
      * @return false if file not read
      */
-    bool readFromFile();
+    bool readFromFile(const string &personalNumber);
     /**
      * receives an account number and check if an account number existwith that number
      * @param accountNr

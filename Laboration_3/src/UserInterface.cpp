@@ -12,7 +12,6 @@ UserInterface::UserInterface()
 
 UserInterface::~UserInterface()
 {
-
 }
 
 int UserInterface::getMenuChoice(int menu)
@@ -26,7 +25,7 @@ int UserInterface::getMenuChoice(int menu)
     if(menu==2)
     {
         printMenu();
-        options={1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+        options= {1,2,3,4,5,6,7,8,9,10,11,12,13,14};
     }
     if(menu==3)
     {
@@ -59,18 +58,17 @@ void UserInterface::createNewClient()
         cout << "\nEmpty entries are not allowed.\nEnter customer's first name and last name: ";
         getline(cin, name);
     }
-    cout << "\nEnter customer's personnummer: ";
+    cout << "\nEnter customer's personal number: ";
     string personNr;
     getline(cin, personNr);
-    cout << "read persnr " << personNr;
     while (personNr.empty())
     {
-        cout << "\nEmpty entries are not allowed.\nEnter customer's personnummer: ";
+        cout << "\nEmpty entries are not allowed.\nEnter customer's personal number: ";
         getline(cin, personNr);
     }
     bank->createCustumer(name, personNr);
-    executeMenuOptions();
     cout << "The client " << bank->getClientName() << " has been created" << endl;
+    executeMenuOptions();
 }
 
 void UserInterface::saveCustomerToFile()
@@ -81,7 +79,10 @@ void UserInterface::saveCustomerToFile()
 
 void UserInterface::readCustomerFromFile()
 {
-    if (bank->readClientFromFile())
+    string personalNumber;
+    cout << "\nEnter customer's personal number: ";
+    getline(cin, personalNumber);
+    if (bank->readClientFromFile(personalNumber))
     {
         executeMenuOptions();
         cout << "Customer successfully read from file" << endl;
@@ -117,42 +118,46 @@ void UserInterface::printAccountInfo()
     string accountNr = chooseAccountNr(message);
     if(!accountNr.empty())
     {
-        vector<int>accInfo;
+        vector<string>accInfo;
         if(bank->accountInfo(accountNr, accInfo))
         {
-            cout << "\nAccount balance: " << accInfo[0];
-            cout << "\nAccount credit: " << accInfo[1];
-            cout << "\nAccount disposable: " << accInfo[2];
+            for (const auto &idx: accInfo)
+            {
+                cout << idx << endl;
+            }
         }
     }
-
 }
 
 void UserInterface::withdrawfromAccount()
 {
     string message1 = "From which account do you want to withdraw: ";
     string accountNr = chooseAccountNr(message1);
+
     if(!accountNr.empty())
     {
-        if(hasMaxWithdrawals(accountNr)&&getNrOfWithdrawals(accountNr)==getMaxWithdrawals(accountNr))
+
+        if(hasMaxWithdrawals(accountNr)&&getNrOfWithdrawals(accountNr)==getMaxWithdrawals(accountNr))// This condition elimanates condition where max withdrawal is reached
         {
             cout << "\nYou have already reached the maximum number of withdrawals for this year." << endl;
-        }
-        else{
 
         }
-        string message2 = "Amount to withdraw: ";
-        int amount = getPositiveInt(message2);
-
-        if(bank->withdraw(accountNr, amount))
-        {
-            cout << amount << " has been withdrawn from account " << accountNr <<"." <<endl;
-        }
         else{
-            cout << "The amount to be withdrawn is greater than the disposable amount" << endl;
+            string message2 = "Amount to withdraw: ";
+            int amount = getPositiveInt(message2);
+
+            if(bank->withdraw(accountNr, amount))
+            {
+                cout << amount << " has been withdrawn from account " << accountNr <<"." <<endl;
+            }
+            else{// withdraw returns false when max withdrawal is reached and when amount is greater than disposable.
+                // But since max withdrawal is controlled above only this condition will be reached only if the amount
+                // to withdraw if greater than disposable
+                cout << "The amount to be withdrawn is greater than the disposable amount" << endl;
+            }
         }
+
     }
-
 }
 
 void UserInterface::depositToAccount()
@@ -272,30 +277,21 @@ void UserInterface::printAccountNrs()
 
 void UserInterface::printAccountsSummary()
 {
-    int n = bank->NrofAccounts();
-    if(n==0)
+
+    vector<vector<string>> accDetails;
+    if(bank->getSummaryToPrint(accDetails))
     {
-        cout << "\nYou have no accounts." <<endl;
-    }
-    else
-    {
-        vector<string>accNrs;
-        vector<vector<int>>data;
-        if(bank->clientSummery(accNrs, data))
+        for(const auto &idx:accDetails)
         {
-            for(int i=0; i<n; i++)
+            for(const auto &index: idx)
             {
-                cout << "\n====" << accNrs[i] << "====";
-                cout << "\nBalance: " << data[i][0];
-                cout << "\nCredit: " << data[i][1];
-                cout << "\nDisposables: " << data[i][2];
+                cout << index <<endl;
             }
         }
-
     }
-
-
-
+    else{
+        cout << "\nYou have no accounts."<<endl;
+    }
 }
 
 void UserInterface::deleteAccount()
@@ -342,14 +338,13 @@ void UserInterface::run()
         {
             case 1:
                 readCustomerFromFile();
-                nextKey();
                 break;
             case 2:
                 createNewClient();
-                nextKey();
                 break;
             case 3:
                 done = true;
+                break;
             default:
                 cout << "\nInvalid choice." << endl;
                 break;
@@ -402,6 +397,7 @@ void UserInterface::executeMenuOptions()
                 break;
             case 10:
                 printAccountsSummary();
+                nextKey();
                 break;
             case 11:
                 createAccount();
@@ -417,6 +413,7 @@ void UserInterface::executeMenuOptions()
                 break;
             case 14:
                 done= true;
+                break;
             default:
                 cout << "\nInvalid choice." << endl;
                 break;
@@ -452,7 +449,7 @@ int UserInterface::getInterest(string &accountNr) const
 
 int UserInterface::getNrOfWithdrawals(string &accountNr) const
 {
-    return bank->getMaxWithdrawals(accountNr);
+    return bank->getNrOfWithdrawals(accountNr);
 }
 
 int UserInterface::getMaxWithdrawals(string &accountNr) const

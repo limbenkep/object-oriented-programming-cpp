@@ -9,6 +9,10 @@ LongTermSavingsAccount::LongTermSavingsAccount(const string &accountNr, int rate
 {
 
 }
+LongTermSavingsAccount::~LongTermSavingsAccount()
+{
+
+}
 
 bool LongTermSavingsAccount::withdraw(int amount)
 {
@@ -44,3 +48,47 @@ void LongTermSavingsAccount::setInterest(int pInterest)
 {
     SavingsAccount::setInterest(pInterest);
 }
+
+void LongTermSavingsAccount::getAccountSummary(vector<string> &vec)
+{
+    //concatenates phrases and the valu to the displayed into a string and pushed to the vector ready to be printed
+    string temp;
+
+    temp = "Longterm savings account nr: " + getAccountNr();
+    vec.push_back(temp);
+
+    string myInt= to_string(getBalance());
+    temp = "balance: " + myInt;
+    vec.push_back(temp);
+
+    myInt = to_string(getUseableAmount());
+    temp = "Disposable: " + myInt;
+    vec.push_back(temp);
+
+    myInt = to_string(getInterest());
+    temp = "Interest Rate: " + myInt + ".0%";
+    vec.push_back(temp);
+
+    temp = "No credit.";
+    vec.push_back(temp);
+    myInt = to_string(getMaxWithdrawals());
+    temp = "Max " + myInt + " annual withdrawal";
+    vec.push_back(temp);
+}
+
+void LongTermSavingsAccount::saveToFile(ofstream &outFile)
+{
+    SavingsAccount::saveToFile(outFile);
+}
+
+bool LongTermSavingsAccount::hasMaxWithdrawals() const
+{
+    return SavingsAccount::hasMaxWithdrawals();
+}
+
+void LongTermSavingsAccount::setNrOfWithdrawals(int pNrOfWithdrawals)
+{
+    SavingsAccount::setNrOfWithdrawals(pNrOfWithdrawals);
+}
+
+

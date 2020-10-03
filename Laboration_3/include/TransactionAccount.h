@@ -15,10 +15,11 @@ private:
 
 public:
 
-    TransactionAccount(const string &accountNr, int pCredit=0);
+    explicit TransactionAccount(const string &accountNr, int pCredit=0);
 
     virtual ~TransactionAccount();
 
+    void saveToFile(ofstream &outFile) override;
 
 /*
  * receives a double as a parameter and subtract the double from balance to give new balance
@@ -60,11 +61,13 @@ public:
  */
     //virtual int getInterest() const;
 
+    virtual void getAccountSummary(vector<string> &vec);
+
 //===========Setters====================================================================================================
 /*
  * receives a double and set the value as credit
  */
-    virtual void setCredit(int pCredit);
+    void setCredit(int pCredit);
 
 /**
  * setInterest
@@ -88,7 +91,7 @@ public:
   * test if account type has a maximum number of withdrawals
  * @return true if it has else false
  */
-    virtual bool hasMaxWithdrawals() {return false;};
+    virtual bool hasMaxWithdrawals()const {return false;};
 };
 
 

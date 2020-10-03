@@ -8,6 +8,7 @@ TransactionAccount::TransactionAccount(const string &accountNr, int pCredit) : A
 {
 }
 
+
 TransactionAccount::~TransactionAccount()
 {
 
@@ -48,6 +49,40 @@ void TransactionAccount::setCredit(int pCredit)
 {
     credit = pCredit;
 }
+
+void TransactionAccount::getAccountSummary(vector<string> &vec)
+{
+    //concatenates phrases and the valu to the displayed into a string and pushed to the vector ready to be printed
+    string temp;
+
+    temp = "=====Transaction account nr: " + getAccountNr() + "=====";
+    vec.push_back(temp);
+    string myInt= to_string(getBalance());
+    temp = "balance: " + myInt;
+    vec.push_back(temp);
+
+    myInt = to_string(getUseableAmount());
+    temp = "Disposable: " + myInt;
+    vec.push_back(temp);
+
+    myInt = to_string(getInterest());
+    temp = "Interest Rate: " + myInt + ".0%";
+    vec.push_back(temp);
+
+    myInt = to_string(getCredit());
+    temp = "Credit Limit: " + myInt;
+    vec.push_back(temp);
+}
+
+void TransactionAccount::saveToFile(ofstream &outFile)
+{
+    outFile <<getAccountType() << endl
+                <<getAccountNr() << endl
+                << getBalance() << endl
+                << getCredit() << endl;
+}
+
+
 
 
 
