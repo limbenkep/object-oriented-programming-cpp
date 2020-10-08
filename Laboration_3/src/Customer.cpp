@@ -2,7 +2,7 @@
 * Honorine Lima
 * Holi1900
 * DT060G_Laboration_3
-* 2020-09-27.
+* 2020-09-27.*/
 
 #include "Customer.h"
 

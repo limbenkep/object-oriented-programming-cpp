@@ -2,7 +2,7 @@
 * Honorine Lima
 * Holi1900
 * DT060G_Laboration_3
-* 2020-09-27.
+* 2020-09-27.*/
 
 #include "LongTermSavingsAccount.h"
 
@@ -64,7 +64,7 @@ void LongTermSavingsAccount::getAccountSummary(vector<string> &vec)
     vec.push_back(temp);
 
     myInt = to_string(getUseableAmount());
-    temp = "Disposable: " + myInt;
+    temp = "Disposable: " + myInt+"kr";
     vec.push_back(temp);
 
     myInt = to_string(getInterest());

@@ -2,7 +2,7 @@
 * Honorine Lima
 * Holi1900
 * DT060G_Laboration_3
-* 2020-09-27.
+* 2020-09-27.*/
 
 #include "SavingsAccount.h"
 
@@ -66,11 +66,11 @@ void SavingsAccount::getAccountSummary(vector<string> &vec)
     vec.push_back(temp);
 
     string myInt= to_string(getBalance());
-    temp = "balance: " + myInt;
+    temp = "balance: " + myInt+"kr";
     vec.push_back(temp);
 
     myInt = to_string(getUseableAmount());
-    temp = "Disposable: " + myInt;
+    temp = "Disposable: " + myInt + "kr";
     vec.push_back(temp);
 
     myInt = to_string(getInterest());

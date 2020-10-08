@@ -151,7 +151,7 @@ void UserInterface::withdrawfromAccount()
 
             if(bank->withdraw(accountNr, amount))
             {
-                cout << amount << " has been withdrawn from account " << accountNr <<"." <<endl;
+                cout << amount << "kr has been withdrawn from account " << accountNr <<"." <<endl;
             }
             else{// withdraw returns false when max withdrawal is reached and when amount is greater than disposable.
                 // But since max withdrawal is controlled above only this condition will be reached only if the amount
@@ -173,7 +173,7 @@ void UserInterface::depositToAccount()
         int amount = getPositiveInt(message2);
 
         bank->deposit(accountNr, amount);
-        cout << amount << " has been deposited in account " << accountNr <<"."<< endl;
+        cout << amount << "kr has been deposited in account " << accountNr <<"."<< endl;
     }
 }
 
@@ -189,7 +189,7 @@ void UserInterface::setCredit()
             int amount = getPositiveInt(message2);
             if(bank->changeAccCredit(accountNr, amount))
             {
-                cout << amount << " credit has been set to account " << accountNr <<"." << endl;
+                cout << amount << "kr credit has been set to account " << accountNr <<"." << endl;
             } else{
                 cout << "\nNo credit allowed." << endl;
             }

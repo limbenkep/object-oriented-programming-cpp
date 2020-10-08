@@ -60,11 +60,11 @@ void TransactionAccount::getAccountSummary(vector<string> &vec)
     temp = "=====Transaction account nr: " + getAccountNr() + "=====";
     vec.push_back(temp);
     string myInt= to_string(getBalance());
-    temp = "balance: " + myInt;
+    temp = "balance: " + myInt + "kr";
     vec.push_back(temp);
 
     myInt = to_string(getUseableAmount());
-    temp = "Disposable: " + myInt;
+    temp = "Disposable: " + myInt + "kr";
     vec.push_back(temp);
 
     myInt = to_string(getInterest());
@@ -72,7 +72,7 @@ void TransactionAccount::getAccountSummary(vector<string> &vec)
     vec.push_back(temp);
 
     myInt = to_string(getCredit());
-    temp = "Credit Limit: " + myInt;
+    temp = "Credit Limit: " + myInt + "kr";
     vec.push_back(temp);
 }
 
