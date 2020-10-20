@@ -34,3 +34,9 @@ pointers and implement the skeleton of the project before going into inheritance
 had to be implmented in one. The Lab presentations were very useful as a guide and the notes were cexplicit enough. I had alot of prompt 
 from my ide to use override instead of virtual for my inherited functions but I am really sure what the difference so I folled the 
 examples from the notes and stuck with virtual. I believe I met the goals of the lab.
+
+##Revision
+This revision attains to the issues stated on the feedbacks from the submission "As stated by the requirements Bank, Customer and 
+Account needs to be completely silent. No console printing may be performed from any of these classes."
+The cout statement has been removed. Also to ensure that no empty customer can be created, The default constructor in the 
+customer class was replaced by a constructor with one parameter, the personal number.

@@ -1,3 +1,13 @@
+
+# Projektets namn
+project (Input_filter)
+# Minsta tillåtna CMake version
+cmake_minimum_required(VERSION 3.2)
+
+# Kompilera med stöd för C++ 11
+set (CMAKE_CXX_STANDARD 11)
+
+include_directories(include)
 # Add source directory
 aux_source_directory(src/ SOURCES)
 
