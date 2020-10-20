@@ -93,7 +93,7 @@ void Bank::saveClientToFile()
 bool Bank::readClientFromFile(const string &personalNumber)
 {
     if(client== nullptr){
-        client = unique_ptr<Customer>(new Customer);
+        client = unique_ptr<Customer>(new Customer(personalNumber));
     }
     return client->readFromFile(personalNumber);
 }

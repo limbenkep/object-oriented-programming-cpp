@@ -6,6 +6,10 @@
 
 #include "Customer.h"
 
+Customer::Customer(const string &pCustomerId) : customerId(pCustomerId)
+{
+
+}
 Customer::Customer(const string &pName, const string &pCustomerId) : name(pName), customerId(pCustomerId)
 {
 
@@ -152,7 +156,6 @@ void Customer::depositToAccount(string &accountnr, int amount)
 bool Customer::changeCredit(string &accountnr, int amount)
 {
     int index = getAccountIndex(accountnr);
-    cout << "account index: " << index << endl;
     if (hasCredit(accountnr))
     {
         bankAccounts[index]->setCredit(amount);

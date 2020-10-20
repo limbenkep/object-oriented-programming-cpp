@@ -31,7 +31,7 @@ private:
     const int maxSize = 3;
 
 public:
-    Customer()= default;
+    Customer(const string &customerId);
     Customer(const string &name, const string &customerId);
 
     virtual ~Customer();
