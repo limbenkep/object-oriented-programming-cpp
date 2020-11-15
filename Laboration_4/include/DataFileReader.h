@@ -26,34 +26,34 @@ template<typename T>
 class DataFileReader
 {
 public:
+
+    /** pre: A file named aDataFile contains values to read.*/
     DataFileReader(const string &aFileName, const string &aErrorFileName) : fileName(aFileName),
                                                                             errorFileName(aErrorFileName)
     {
     }
-
+    /* post: Files are closed */
     virtual ~DataFileReader();
 
-/** pre: A file named aDataFile contains values to read.
-*/
-
-/* post: Files are closed */
-    void openFiles();
 
 /* post: An input stream from the file named aDataFile and
 an output stream to the file named aErrorFile are
 opened. If either of these operations fails a
 runtime_error exception is thrown. */
-    bool readNextValue(T &aValue);
+    void openFiles();
+
 /* pre: openFiles has been successfully called.
 post: If a value has been successfully read, aValue
 holds that value and true is returned.
 Else, the read operation encountered an
 end-of-file and false is returned. */
+    bool readNextValue(T &aValue);
+
 private:
-    string fileName;
-    string errorFileName;
-    ofstream outputstream;
-    ifstream inputstream;
+    string fileName;//file containing data to be read
+    string errorFileName;// file to which error values are written to
+    ofstream outputstream;// object for reading for file
+    ifstream inputstream;// object for writting to file.
     bool isOpenFileCalled{false};
 
 };
