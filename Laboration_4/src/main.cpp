@@ -16,7 +16,7 @@
  * Average of values read
  */
 
-#include "Prototypes.h"
+
 #include "memstat.hpp"
 #include "DataFilter.h"
 int main() {
