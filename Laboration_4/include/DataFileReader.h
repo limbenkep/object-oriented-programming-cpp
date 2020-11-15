@@ -23,7 +23,7 @@ public:
 
     virtual ~DataFileReader();
 
-/* pre: A file named aDataFile contains values to read.
+/** pre: A file named aDataFile contains values to read.
 */
 
 /* post: Files are closed */
@@ -58,6 +58,7 @@ DataFileReader<T>::~DataFileReader()
 template<typename T>
 void DataFileReader<T>::openFiles()
 {
+    isOpenFileCalled = true;
     outputstream.open(errorFileName);
     inputstream.open(fileName);
 
@@ -70,21 +71,40 @@ void DataFileReader<T>::openFiles()
         throw runtime_error(errorFileName + " could not be opened");
     }
 
-    isOpenFileCalled = true;
 }
 
 template<typename T>
 bool DataFileReader<T>::readNextValue(T &aValue)
 {
-    if (!isOpenFileCalled)
+    /*if (!isOpenFileCalled)
     {
         throw runtime_error("Function to open files has not be called");
+    }*/
+
+    ios_base::iostate mask = ios::eofbit| ios::failbit | ios::badbit;
+    inputstream.exceptions(mask);
+    while(true)
+    {
+        try
+        {
+            inputstream>>aValue;
+            return true;
+        } catch (ios_base::failure&eo)
+        {
+            ios_base::iostate flags = inputstream.rdstate();
+            if(flags & ios::eofbit)
+            {
+                inputstream.clear();
+                return false;
+            } else{
+                string error;
+                inputstream.clear();
+                getline(inputstream,error);
+                outputstream << error << endl;
+            }
+        }
     }
-    string str;
-    std::getline(inputstream, str);
-    stringstream ss(str);
-    if (ss >> aValue) return true;
-    return false;
+
 }
 
 
