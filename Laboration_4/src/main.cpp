@@ -1,3 +1,21 @@
+/*main.cpp
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_4
+* 2020-10-30.
+*/
+/**============short description=================================
+ * This program reads values from a file generated a program that stores numerical values and filters the values for
+ * two types of faults;
+ *  values that falls outside the given range and
+ *  values that contain non numeric characters.
+ * The program then prints out data on;
+ * Number of values read
+ * Number of values out of range
+ * Sum of values read
+ * Average of values read
+ */
+
 #include "Prototypes.h"
 #include "memstat.hpp"
 #include "DataFilter.h"

@@ -1,6 +1,13 @@
-//
-// Created by limbe on 2020-11-15.
-//
+/*DataFilter.h
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_4
+* 2020-11-15.
+*/
+/**============short description=================================
+ * This class has a minimum and maximum value as well as an instance of the DataFileReader as datamembers.
+ * This classfilter values read by the DataFileReader class and return an exception when the value lies outside a specified range.
+ */
 
 #ifndef INPUT_FILTER_DATAFILTER_H
 #define INPUT_FILTER_DATAFILTER_H

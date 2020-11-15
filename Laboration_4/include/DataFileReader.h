@@ -1,6 +1,16 @@
-//
-// Created by limbe on 2020-11-15.
-//
+/*DataFileReader.h
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_4
+* 2020-11-15.
+*/
+/**============short description=================================
+ * This class has data members;
+ * the name a file containing data to be read,
+ * the name a file to which to write error values to,
+ * an ifstrean and ofstream object.
+ * This class reads values from the given file and filter values for values with non numeric characters.
+ */
 
 #ifndef INPUT_FILTER_DATAFILEREADER_H
 #define INPUT_FILTER_DATAFILEREADER_H
