@@ -2,19 +2,21 @@
 // Created by limbe on 2020-11-16.
 //
 
-#ifndef TRAINS_SLEEPINGCAR_H
-#define TRAINS_SLEEPINGCAR_H
+#ifndef TRAINS_COVEREDFREIGHTCAR_H
+#define TRAINS_COVEREDFREIGHTCAR_H
 #include "Car.h"
 
-class SleepingCar: public Car
+class CoveredFreightCar: public Car
 {
 private:
-    int nrOfBeds;
-public:
-    SleepingCar(const string &pId, int pNrOfBeds);
+    int capacity;
 
-    virtual ~SleepingCar();
-    /*
+public:
+    CoveredFreightCar(const string &pId, int pCapacity);
+
+    virtual ~CoveredFreightCar();
+
+/*
 * returns car type
 */
     virtual string getCarType()const;
@@ -25,7 +27,7 @@ public:
 /*
 * returns number of beds in the sleeping car
 */
-    virtual int getNrOfBeds() const;
+    //virtual int getNrOfBeds() const{return 0;};
 /*
 * returns a bool true if Car has internet or false if it doesnot
 */
@@ -33,12 +35,12 @@ public:
 /*
 * returns the capacity of the car
 */
-    //virtual int getCapacity() const{return 0;};
+    virtual int getCapacity() const;
 
 /*
 * returns the floor area of the car
 */
-   // virtual int getFloorArea() const{return 0;};
+    virtual int getFloorArea() const{return 0;};
 
 
 
@@ -50,21 +52,21 @@ public:
 /*
 * returns a bool true if Car has beds or false if it doesnot
 */
-    virtual bool hasBeds(){return true;};
+    virtual bool hasBeds(){return false;};
 /*
 * returns a bool true if Car has chairs or false if it doesnot
 */
     virtual bool hasChairs(){return false;};
-
-    /* returns a bool true if Car has capacity propertty or false if it doesnot
-    */
-    virtual bool hasCapacity(){return false;};
+/*
+* returns a bool true if Car has capacity propertty or false if it doesnot
+*/
+    virtual bool hasCapacity(){return true;};
 /*
 * returns a bool true if Car has opened floor or false if it doesnot
 */
-    virtual bool hasFloorArea(){return false;};
+    virtual bool hasFloorArea(){return true;};
 
 };
 
 
-#endif //TRAINS_SLEEPINGCAR_H
+#endif //TRAINS_COVEREDFREIGHTCAR_H
