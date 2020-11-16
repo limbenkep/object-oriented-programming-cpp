@@ -53,6 +53,26 @@ public:
 
 
     //virtual void setNrOfChairs(int pNrOfChairs){};
+/*
+* returns a bool true if Car has internet options or false if it doesnot
+*/
+    virtual bool hasInternet(){return false;};
+/*
+* returns a bool true if Car has beds or false if it doesnot
+*/
+    virtual bool hasBeds(){return false;};
+/*
+* returns a bool true if Car has chairs or false if it doesnot
+*/
+    virtual bool hasChairs(){return false;};
+/*
+* returns a bool true if Car has capacity propertty or false if it doesnot
+*/
+    virtual bool hasCapacity(){return false;};
+/*
+* returns a bool true if Car has opened floor or false if it doesnot
+*/
+    virtual bool hasFloorArea(){return false;};
 
 
 
