@@ -2,19 +2,18 @@
 // Created by limbe on 2020-11-16.
 //
 
-#ifndef TRAINS_COVEREDFREIGHTCAR_H
-#define TRAINS_COVEREDFREIGHTCAR_H
-#include "Car.h"
+#ifndef TRAINS_OPENFREIGHTCAR_H
+#define TRAINS_OPENFREIGHTCAR_H
+#include "CoveredFreightCar.h"
 
-class CoveredFreightCar: public Car
+class OpenFreightCar:public CoveredFreightCar
 {
 private:
-    int capacity;
-
+    int floorArea;
 public:
-    CoveredFreightCar(const string &pId, int pCapacity);
+    OpenFreightCar(const string &pId, int pCapacity, int floorArea);
 
-    virtual ~CoveredFreightCar();
+    virtual ~OpenFreightCar();
 
 /*
 * returns car type
@@ -40,7 +39,7 @@ public:
 /*
 * returns the floor area of the car
 */
-    virtual int getFloorArea() const{return 0;};
+    virtual int getFloorArea() const;
 
 
 
@@ -64,9 +63,9 @@ public:
 /*
 * returns a bool true if Car has opened floor or false if it doesnot
 */
-    virtual bool hasFloorArea(){return false;};
+    virtual bool hasFloorArea(){return true;};
 
 };
 
 
-#endif //TRAINS_COVEREDFREIGHTCAR_H
+#endif //TRAINS_OPENFREIGHTCAR_H
