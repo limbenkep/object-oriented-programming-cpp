@@ -31,12 +31,12 @@ public:
  * sets the maximum power
  * @param pMaxPower
  */
-    void setMaxPower(int pMaxPower){};
+    virtual void setMaxPower(int pMaxPower){};
 /**
  * sets the fuel consumption
  * @param amount
  */
-    void setConsumption(int amount){};
+    virtual void setConsumption(int amount){};
 /**
  *
  * @return fuel consumption as an integer
