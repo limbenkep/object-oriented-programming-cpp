@@ -4,17 +4,19 @@
 
 #ifndef TRAINS_ENGINE_H
 #define TRAINS_ENGINE_H
+#include "Vehicle.h"
 #include <iostream>
 #include <string>
 using namespace std;
 
 
-class Engine
+class Engine: public Vehicle
 {
 private:
     int maxSpeed;
 public:
-    Engine(int pMaxSpeed);
+    Engine(const string &id, int maxSpeed);
+
 
     virtual ~Engine();
 /**
@@ -52,6 +54,7 @@ public:
  * @return maximum speed as an integer
  */
     virtual string getEngineType() const=0;
+
 
 
 };

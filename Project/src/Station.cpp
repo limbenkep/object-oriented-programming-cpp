@@ -27,14 +27,46 @@ void Station::setName(const string &pName)
     name = pName;
 }
 
-void Station::addCar(string &pType, shared_ptr<Car>&car)
+void Station::addVehicle(string &pType, shared_ptr<Vehicle> &vehicle)
 {
-    cars.insert(make_pair(pType, car));
+    vehicles[pType].push_back(vehicle);
 }
 
-void Station::addEngine(string &pType, shared_ptr<Engine> &engine)
+/*void Station::addEngine(string &pType, shared_ptr<Engine> &engine)
 {
-    engines.insert(make_pair(pType, engine));
+    engines[pType].push_back(engine);
+}*/
+
+template<typename T>
+void Station::sortVector(vector<T> &vec)
+{
+    sort( vec.begin( ), vec.end( ), [&vec]( const T& lhs, const T& rhs )
+    {
+        return lhs < rhs;
+    });
+
+}
+
+bool Station::getVehicle(string &type, shared_ptr<Vehicle> &vehicle)
+{
+    auto it = vehicles.find(type);
+    if(it==vehicles.end())
+    {
+        return false;
+    }
+    else{
+        vector<shared_ptr<Vehicle>>vec;
+        vec = vehicles[type];
+        if(vec.empty())
+        {
+            return false;
+        }
+        sortVector(vec);
+        vehicle = vec[0];
+        auto toDelete = vec[0];
+        return true;
+    }
+
 }
 
 

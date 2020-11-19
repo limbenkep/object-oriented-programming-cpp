@@ -107,8 +107,6 @@ public:
  * @param pType a vehicle type
  */
     void addVehicleType(const string &pType);
-
-
 };
 
 

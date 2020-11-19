@@ -4,7 +4,7 @@
 
 #include "SleepingCar.h"
 
-SleepingCar::SleepingCar(const string &pId, int pNrOfBeds) : Car(pId), nrOfBeds(pNrOfBeds)
+SleepingCar::SleepingCar(const string &pId, int pNrOfBeds) : Vehicle(pId), nrOfBeds(pNrOfBeds)
 {
 }
 
@@ -13,7 +13,7 @@ SleepingCar::~SleepingCar()
 
 }
 
-string SleepingCar::getCarType() const
+string SleepingCar::getVehicleType() const
 {
     return "Sleeping car";
 }

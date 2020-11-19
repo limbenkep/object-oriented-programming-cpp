@@ -14,7 +14,7 @@ OpenFreightCar::~OpenFreightCar()
 
 }
 
-string OpenFreightCar::getCarType() const
+string OpenFreightCar::getVehicleType() const
 {
     return "Open frieght car";
 }

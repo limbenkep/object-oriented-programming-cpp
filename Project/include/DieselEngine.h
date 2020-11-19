@@ -4,17 +4,22 @@
 
 #ifndef TRAINS_DIESELENGINE_H
 #define TRAINS_DIESELENGINE_H
-#include "Engine.h"
+#include "Vehicle.h"
 
 
-class DieselEngine:public Engine
+class DieselEngine:public Vehicle
 {
 private:
+    int maxSpeed;
     int consumption;
 public:
-    DieselEngine(int pMaxSpeed, int amount);
+    DieselEngine(const string &id, int maxSpeed, int consumption);
 
     virtual ~DieselEngine();
+
+    virtual int getMaxSpeed() const;
+
+    virtual void setMaxSpeed(int pMaxSpeed);
 /**
  * sets the maximum power
  * @param pMaxPower
@@ -39,7 +44,7 @@ public:
  *
  * @return maximum speed as an integer
  */
-    virtual string getEngineType() const;
+    virtual string getVehicleType() const;
 
 };
 

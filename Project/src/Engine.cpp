@@ -4,7 +4,7 @@
 
 #include "Engine.h"
 
-Engine::Engine(int pMaxSpeed) : maxSpeed(pMaxSpeed)
+Engine::Engine(const string &id, int maxSpeed) : Vehicle(id), maxSpeed(maxSpeed)
 {
 }
 
@@ -22,3 +22,6 @@ void Engine::setMaxSpeed(int pMaxSpeed)
 {
     maxSpeed = pMaxSpeed;
 }
+
+
+

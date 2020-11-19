@@ -4,17 +4,23 @@
 
 #ifndef TRAINS_ELECTRICENGINE_H
 #define TRAINS_ELECTRICENGINE_H
-#include "Engine.h"
+#include "Vehicle.h"
 
-class ElectricEngine: public Engine
+class ElectricEngine: public Vehicle
 {
 private:
+    int maxSpeed;
     int maxPower;
 
+
 public:
-    ElectricEngine(int pMaxSpeed, int pMaxPower);
+    ElectricEngine(const string &id, int maxSpeed, int maxPower);
 
     virtual ~ElectricEngine();
+
+    virtual int getMaxSpeed() const;
+
+    virtual void setMaxSpeed(int pMaxSpeed);
 
     /**
  * sets the maximum power
@@ -40,7 +46,7 @@ public:
  *
  * @return maximum speed as an integer
  */
-    virtual string getEngineType() const;
+    virtual string getVehicleType() const;
 
 
 };

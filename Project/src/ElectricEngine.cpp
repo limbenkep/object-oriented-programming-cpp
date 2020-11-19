@@ -4,7 +4,8 @@
 
 #include "ElectricEngine.h"
 
-ElectricEngine::ElectricEngine(int pMaxSpeed, int pMaxPower) : Engine(pMaxSpeed), maxPower(pMaxPower)
+ElectricEngine::ElectricEngine(const string &id, int maxSpeed, int maxPower) : Vehicle(id), maxSpeed(maxSpeed), maxPower(maxPower)
+
 {
 }
 
@@ -23,7 +24,19 @@ void ElectricEngine::setMaxPower(int pMaxPower)
     maxPower = pMaxPower;
 }
 
-string ElectricEngine::getEngineType() const
+string ElectricEngine::getVehicleType() const
 {
     return "Electrical";
 }
+
+int ElectricEngine::getMaxSpeed() const
+{
+    return maxSpeed;
+}
+
+void ElectricEngine::setMaxSpeed(int pMaxSpeed)
+{
+    maxSpeed = pMaxSpeed;
+}
+
+

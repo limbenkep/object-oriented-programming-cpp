@@ -4,9 +4,11 @@
 
 #include "DieselEngine.h"
 
-DieselEngine::DieselEngine(int pMaxSpeed, int amount) : Engine(pMaxSpeed), consumption(amount)
+DieselEngine::DieselEngine(const string &id, int maxSpeed, int consumption) : Vehicle(id), maxSpeed(maxSpeed),
+                                                                              consumption(consumption)
 {
 }
+
 
 DieselEngine::~DieselEngine()
 {
@@ -23,7 +25,18 @@ void DieselEngine::setConsumption(int amount)
     consumption= amount;
 }
 
-string DieselEngine::getEngineType() const
+string DieselEngine::getVehicleType() const
 {
-    return "Diesel";
+    return "Diesel engine";
 }
+
+int DieselEngine::getMaxSpeed() const
+{
+    return maxSpeed;
+}
+
+void DieselEngine::setMaxSpeed(int pMaxSpeed)
+{
+    maxSpeed = pMaxSpeed;
+}
+

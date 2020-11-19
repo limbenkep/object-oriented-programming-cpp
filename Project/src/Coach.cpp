@@ -4,7 +4,7 @@
 
 #include "Coach.h"
 
-Coach::Coach(const string &id, int nrOfChairs, bool internet) : Car(id), nrOfChairs(nrOfChairs), internet(internet)
+Coach::Coach(const string &id, int nrOfChairs, bool internet) : Vehicle(id), nrOfChairs(nrOfChairs), internet(internet)
 {
 }
 
@@ -13,7 +13,7 @@ Coach::~Coach()
 
 }
 
-string Coach::getCarType() const
+string Coach::getVehicleType() const
 {
     return "Coach";
 }

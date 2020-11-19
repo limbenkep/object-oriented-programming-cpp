@@ -4,7 +4,7 @@
 
 #include "CoveredFreightCar.h"
 
-CoveredFreightCar::CoveredFreightCar(const string &pId, int Capacity) : Car(pId), capacity(Capacity)
+CoveredFreightCar::CoveredFreightCar(const string &pId, int Capacity) : Vehicle(pId), capacity(Capacity)
 {
 }
 
@@ -13,7 +13,7 @@ CoveredFreightCar::~CoveredFreightCar()
 
 }
 
-string CoveredFreightCar::getCarType() const
+string CoveredFreightCar::getVehicleType() const
 {
     return "Covered freight";
 }
