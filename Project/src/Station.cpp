@@ -27,7 +27,7 @@ void Station::setName(const string &pName)
     name = pName;
 }
 
-void Station::addVehicle(string &pType, shared_ptr<Vehicle> &vehicle)
+void Station::addVehicle(int pType, shared_ptr<Vehicle> &vehicle)
 {
     vehicles[pType].push_back(vehicle);
 }
@@ -47,7 +47,7 @@ void Station::sortVector(vector<T> &vec)
 
 }
 
-bool Station::getVehicle(string &type, shared_ptr<Vehicle> &vehicle)
+bool Station::getVehicle(int type, shared_ptr<Vehicle> &vehicle)
 {
     auto it = vehicles.find(type);
     if(it==vehicles.end())
@@ -65,6 +65,56 @@ bool Station::getVehicle(string &type, shared_ptr<Vehicle> &vehicle)
         vehicle = vec[0];
         auto toDelete = vec[0];
         return true;
+    }
+
+}
+
+void Station::readFromFile(istream &inputFile)
+{
+
+    string tmpId, waste;
+    int tmpType;
+    int parameter1;
+    int parameter2;
+    inputFile >> name;
+    inputFile>>waste;
+    inputFile >> tmpId;
+    inputFile >> tmpType;
+    inputFile>> parameter1;
+    inputFile>> parameter2;
+    inputFile>>waste;
+
+    if(tmpType==0)
+    {
+        shared_ptr<Vehicle> vehicle(new Coach(tmpId, parameter1, parameter2));
+        addVehicle(tmpType, vehicle);
+    }
+    else if(tmpType ==1)
+    {
+        shared_ptr<Vehicle> vehicle(new SleepingCar(tmpId, parameter1));
+        addVehicle(tmpType, vehicle);
+    }
+    else if(tmpType==2)
+    {
+        shared_ptr<Vehicle> vehicle(new OpenFreightCar(tmpId, parameter1, parameter2));
+        addVehicle(tmpType, vehicle);
+    }
+    else if(tmpType==3)
+    {
+        shared_ptr<Vehicle> vehicle(new CoveredFreightCar(tmpId, parameter1));
+        addVehicle(tmpType, vehicle);
+    }
+    else if(tmpType==4)
+    {
+        shared_ptr<Vehicle> vehicle(new ElectricEngine(tmpId, parameter1, parameter2));
+        addVehicle(tmpType, vehicle);
+    }
+    else if(tmpType==5)
+    {
+        shared_ptr<Vehicle> vehicle(new DieselEngine(tmpId, parameter1, parameter2));
+        addVehicle(tmpType, vehicle);
+    } else{
+        cout << "An unknowm Car type " << tmpType << " was read from file" << endl;
     }
 
 }

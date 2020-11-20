@@ -27,3 +27,12 @@ bool Coach::getInternet() const
 {
     return internet;
 }
+
+/*void Coach::readVehicle(ifstream &inputFile)
+{
+    string pType;
+    inputFile>>id;
+    inputFile>>pType;
+    inputFile>> nrOfChairs;
+    inputFile>> internet;
+}*/

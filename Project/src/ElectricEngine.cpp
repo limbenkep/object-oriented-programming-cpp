@@ -39,4 +39,13 @@ void ElectricEngine::setMaxSpeed(int pMaxSpeed)
     maxSpeed = pMaxSpeed;
 }
 
+/*void ElectricEngine::readVehicle(ifstream &inputFile)
+{
+    string pType;
+    inputFile>>id;
+    inputFile>>pType;
+    inputFile>> maxSpeed;
+    inputFile>> maxPower;
+}*/
+
 

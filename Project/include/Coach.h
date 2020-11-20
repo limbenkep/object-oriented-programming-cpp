@@ -32,6 +32,11 @@ public:
 */
     virtual bool getInternet() const;
 
+/**
+ * reads vehicle from a file
+ */
+    //virtual void readVehicle(ifstream &inputFile);
+
 /*=======================Testers============================================*!
 
     /*

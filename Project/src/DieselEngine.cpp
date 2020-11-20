@@ -40,3 +40,12 @@ void DieselEngine::setMaxSpeed(int pMaxSpeed)
     maxSpeed = pMaxSpeed;
 }
 
+/*void DieselEngine::readVehicle(ifstream &inputFile)
+{
+    string pType;
+    inputFile>>id;
+    inputFile>>pType;
+    inputFile>> maxSpeed;
+    inputFile>> consumption;
+}*/
+

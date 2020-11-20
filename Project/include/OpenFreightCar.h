@@ -41,6 +41,10 @@ public:
 */
     virtual int getFloorArea() const;
 
+/**
+ * reads vehicle from a file
+ */
+    //virtual void readVehicle(ifstream &inputFile);
 
 
     //virtual void setNrOfChairs(int pNrOfChairs){};

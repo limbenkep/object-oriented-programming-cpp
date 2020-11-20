@@ -5,6 +5,12 @@
 #ifndef TRAINS_STATION_H
 #define TRAINS_STATION_H
 #include "Vehicle.h"
+#include "Coach.h"
+#include "SleepingCar.h"
+#include "CoveredFreightCar.h"
+#include "OpenFreightCar.h"
+#include "ElectricEngine.h"
+#include "DieselEngine.h"
 #include "Engine.h"
 #include <iostream>
 #include <map>
@@ -20,7 +26,7 @@ private:
     string name;
     //vector<shared_ptr<Vehicle>>cars;
     //vector<shared_ptr<Engine>>engines;
-    map<string, vector<shared_ptr<Vehicle>>>vehicles;
+    map<int, vector<shared_ptr<Vehicle>>>vehicles;
    // map<string, vector<shared_ptr<Engine>>>engines;
 public:
     Station();
@@ -43,7 +49,7 @@ public:
  * @param pType type of Vehicle
  * @param engine Engine object with all its properties
  */
-    void addVehicle(string &pType, shared_ptr<Vehicle>&vehicle);
+    void addVehicle(int pType, shared_ptr<Vehicle>&vehicle);
 /**
  * receives an engine and the type of engine and stores it in a container containing the stations engines
  * @param pType type of Engine
@@ -63,10 +69,11 @@ public:
  * @param engine pointer to hold the engine found to be returned
  * @return true if the vehicle of the given type if found and false if not found
  */
-    bool getVehicle(string &type, shared_ptr<Vehicle>&vehicle);
+    bool getVehicle(int type, shared_ptr<Vehicle>&vehicle);
 
     template<typename T>
     void sortVector(vector<T>&vec);
+    virtual void readFromFile(istream &inputFile);
 
 
 };

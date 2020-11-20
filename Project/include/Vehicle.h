@@ -6,11 +6,12 @@
 #define TRAINS_VEHICLE_H
 
 #include <iostream>
+#include <fstream>
 #include <string>
 using namespace std;
 class Vehicle
 {
-private:
+protected:
     string id;
 public:
     Vehicle(const string &id);
@@ -89,6 +90,7 @@ public:
  * @return maximum speed as an integer
  */
    // virtual string getEngineType() const=0;
+   //virtual void readVehicle(ifstream &inputFile)=0;
 
 
 /*
@@ -119,12 +121,7 @@ public:
  * @return
  */
     bool operator<(const Vehicle &car) const;
-
-
-
-
-
 };
 
-
+istream &operator>>(istream &is, Vehicle &vehicle);
 #endif //TRAINS_VEHICLE_H

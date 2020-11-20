@@ -22,3 +22,15 @@ int CoveredFreightCar::getCapacity() const
 {
     return capacity;
 }
+
+/*
+void CoveredFreightCar::readVehicle(ifstream &inputFile)
+{
+    string pType;
+    string waste;
+    inputFile>>id;
+    inputFile>>pType;
+    inputFile>> capacity;
+    inputFile>> waste;
+}
+*/

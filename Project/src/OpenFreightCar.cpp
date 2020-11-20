@@ -28,3 +28,12 @@ int OpenFreightCar::getFloorArea() const
 {
     return floorArea;
 }
+
+/*void OpenFreightCar::readVehicle(ifstream &inputFile)
+{
+    string pType;
+    inputFile>>id;
+    inputFile>>pType;
+    inputFile>> capacity;
+    inputFile>> floorArea;
+}*/

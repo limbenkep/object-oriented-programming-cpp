@@ -8,7 +8,7 @@
 
 class CoveredFreightCar: public Vehicle
 {
-private:
+protected:
     int capacity;
 
 public:
@@ -41,6 +41,10 @@ public:
 * returns the floor area of the car
 */
     virtual int getFloorArea() const{return 0;};
+/**
+ * reads vehicle from a file
+ */
+   // virtual void readVehicle(ifstream &inputFile);
 
 
 
