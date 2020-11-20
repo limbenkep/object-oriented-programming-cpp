@@ -12,23 +12,23 @@ using namespace std;
 class Vehicle
 {
 protected:
-    string id;
+    int id;
 public:
-    Vehicle(const string &id);
+    Vehicle(int id);
 
     virtual ~Vehicle();
 /*
 * returns car id
 */
-    const string &getId() const;
+    int getId() const;
 /*
 * sets the car id with passed value
 */
-    void setId(const string &pId);
+    void setId(int pId);
 /*
 * returns car type
 */
-    virtual string getVehicleType()const = 0;
+    virtual int getVehicleType()const = 0;
 /*
 * returns number of chairs in the coach car
 */
@@ -87,9 +87,9 @@ public:
     virtual int getMaxPower() const{return 0;};
 /**
  *
- * @return maximum speed as an integer
+ * print the properties of the vehicle on the screen
  */
-   // virtual string getEngineType() const=0;
+   virtual void printVehicle() const = 0;
    //virtual void readVehicle(ifstream &inputFile)=0;
 
 

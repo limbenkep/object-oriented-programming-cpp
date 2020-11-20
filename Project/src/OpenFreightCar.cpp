@@ -4,7 +4,7 @@
 
 #include "OpenFreightCar.h"
 
-OpenFreightCar::OpenFreightCar(const string &pId, int pCapacity, int floorArea) : CoveredFreightCar(pId, pCapacity),
+OpenFreightCar::OpenFreightCar(int pId, int pCapacity, int floorArea) : CoveredFreightCar(pId, pCapacity),
                                                                                   floorArea(floorArea)
 {
 }
@@ -14,9 +14,9 @@ OpenFreightCar::~OpenFreightCar()
 
 }
 
-string OpenFreightCar::getVehicleType() const
+int OpenFreightCar::getVehicleType() const
 {
-    return "Open frieght car";
+    return 2;
 }
 
 int OpenFreightCar::getCapacity() const
@@ -27,6 +27,11 @@ int OpenFreightCar::getCapacity() const
 int OpenFreightCar::getFloorArea() const
 {
     return floorArea;
+}
+
+void OpenFreightCar::printVehicle() const
+{
+    cout<< "Open freight car, Type:" << getVehicleType() <<  ", id: " << id << ", Capacity: " << capacity<< "cubic meters, Floor area: " << floorArea <<"liters/h" <<endl;
 }
 
 /*void OpenFreightCar::readVehicle(ifstream &inputFile)

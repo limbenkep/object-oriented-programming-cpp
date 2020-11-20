@@ -14,7 +14,7 @@ private:
 
 
 public:
-    ElectricEngine(const string &id, int maxSpeed, int maxPower);
+    ElectricEngine(int id, int maxSpeed, int maxPower);
 
     virtual ~ElectricEngine();
 
@@ -46,8 +46,9 @@ public:
  *
  * @return maximum speed as an integer
  */
-    virtual string getVehicleType() const;
+    virtual int getVehicleType() const;
 
+    void printVehicle() const override;
 /**
  * reads vehicle from a file
  */

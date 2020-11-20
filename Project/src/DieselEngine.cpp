@@ -4,7 +4,7 @@
 
 #include "DieselEngine.h"
 
-DieselEngine::DieselEngine(const string &id, int maxSpeed, int consumption) : Vehicle(id), maxSpeed(maxSpeed),
+DieselEngine::DieselEngine(int id, int maxSpeed, int consumption) : Vehicle(id), maxSpeed(maxSpeed),
                                                                               consumption(consumption)
 {
 }
@@ -25,9 +25,9 @@ void DieselEngine::setConsumption(int amount)
     consumption= amount;
 }
 
-string DieselEngine::getVehicleType() const
+int DieselEngine::getVehicleType() const
 {
-    return "Diesel engine";
+    return 5;
 }
 
 int DieselEngine::getMaxSpeed() const
@@ -38,6 +38,11 @@ int DieselEngine::getMaxSpeed() const
 void DieselEngine::setMaxSpeed(int pMaxSpeed)
 {
     maxSpeed = pMaxSpeed;
+}
+
+void DieselEngine::printVehicle() const
+{
+    cout<< "Diesel engine, Type:" << getVehicleType() <<  ", id: " << id << ", Max speed: " << maxSpeed<< "km/h, Fuel consumption: " << consumption <<"liters/h" <<endl;
 }
 
 /*void DieselEngine::readVehicle(ifstream &inputFile)

@@ -11,13 +11,13 @@ class SleepingCar: public Vehicle
 private:
     int nrOfBeds;
 public:
-    SleepingCar(const string &pId, int pNrOfBeds);
+    SleepingCar(const int pId, int pNrOfBeds);
 
     virtual ~SleepingCar();
     /*
 * returns car type
 */
-    virtual string getVehicleType()const;
+    virtual int getVehicleType()const;
 /*
 * returns number of chairs in the coach car
 */
@@ -40,7 +40,7 @@ public:
 */
    // virtual int getFloorArea() const{return 0;};
 
-
+    void printVehicle() const override;
 
     //virtual void setNrOfChairs(int pNrOfChairs){};
 /*

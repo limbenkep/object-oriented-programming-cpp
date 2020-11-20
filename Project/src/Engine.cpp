@@ -4,7 +4,7 @@
 
 #include "Engine.h"
 
-Engine::Engine(const string &id, int maxSpeed) : Vehicle(id), maxSpeed(maxSpeed)
+Engine::Engine(int id, int maxSpeed) : Vehicle(id), maxSpeed(maxSpeed)
 {
 }
 

@@ -12,7 +12,7 @@ private:
     int nrOfChairs;
     bool internet;
 public:
-    Coach(const string &id, int nrOfChairs, bool internet);
+    Coach(int id, int nrOfChairs, bool internet);
 
     virtual ~Coach();
 
@@ -21,7 +21,7 @@ public:
 /*
 * returns car type
 */
-    virtual string getVehicleType()const;
+    virtual int getVehicleType()const;
 /*
 * returns number of chairs in the coach car
 */
@@ -36,6 +36,11 @@ public:
  * reads vehicle from a file
  */
     //virtual void readVehicle(ifstream &inputFile);
+    /**
+ *
+ * print the properties of the vehicle on the screen
+ */
+    virtual void printVehicle() const;
 
 /*=======================Testers============================================*!
 

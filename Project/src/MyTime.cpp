@@ -88,7 +88,8 @@ void MyTime::setTime(const int pTotalSec)
 
 ostream &operator<< (ostream &os, const MyTime &time)
 {
-    os << time.timeToSeconds();
+    //os << time.timeToSeconds();
+    os<< time.getHours()<<":"<<time.getMinutes();
     return os;
 }
 
@@ -98,8 +99,10 @@ istream &operator>> (istream & is, MyTime &time)
     is >> str;
     std::replace(str.begin(), str.end(), ':', ' ');  // replace ':' by ' '
     stringstream ss(str);
-
-    time.setTime(temp);
+    int hour, minute;
+    ss >> hour>>minute;
+    time.setHours(hour);
+    time.setMinutes(minute);
     return is;
 }
 

@@ -12,14 +12,16 @@ protected:
     int capacity;
 
 public:
-    CoveredFreightCar(const string &pId, int pCapacity);
+    CoveredFreightCar(int pId, int pCapacity);
 
     virtual ~CoveredFreightCar();
+
+    virtual void printVehicle() const;
 
 /*
 * returns car type
 */
-    virtual string getVehicleType()const;
+    virtual int getVehicleType()const;
 /*
 * returns number of chairs in the coach car
 */

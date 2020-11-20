@@ -13,7 +13,7 @@ private:
     int maxSpeed;
     int consumption;
 public:
-    DieselEngine(const string &id, int maxSpeed, int consumption);
+    DieselEngine(int id, int maxSpeed, int consumption);
 
     virtual ~DieselEngine();
 
@@ -44,13 +44,13 @@ public:
  *
  * @return maximum speed as an integer
  */
-    virtual string getVehicleType() const;
+    virtual int getVehicleType() const;
 
 /**
  * reads vehicle from a file
  */
     //virtual void readVehicle(ifstream &inputFile);
-
+    void printVehicle() const override;
 };
 
 

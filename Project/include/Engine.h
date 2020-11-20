@@ -15,7 +15,7 @@ class Engine: public Vehicle
 private:
     int maxSpeed;
 public:
-    Engine(const string &id, int maxSpeed);
+    Engine(int id, int maxSpeed);
 
 
     virtual ~Engine();

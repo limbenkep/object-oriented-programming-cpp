@@ -4,7 +4,7 @@
 
 #include "SleepingCar.h"
 
-SleepingCar::SleepingCar(const string &pId, int pNrOfBeds) : Vehicle(pId), nrOfBeds(pNrOfBeds)
+SleepingCar::SleepingCar(int pId, int pNrOfBeds) : Vehicle(pId), nrOfBeds(pNrOfBeds)
 {
 }
 
@@ -13,12 +13,18 @@ SleepingCar::~SleepingCar()
 
 }
 
-string SleepingCar::getVehicleType() const
+int SleepingCar::getVehicleType() const
 {
-    return "Sleeping car";
+    return 1;
 }
 
 int SleepingCar::getNrOfBeds() const
 {
     return nrOfBeds;
+}
+
+void SleepingCar::printVehicle() const
+{
+    cout<< "Sleeping car, Type:" << getVehicleType() <<  ", id: " << id << ", Number of beds: " << nrOfBeds <<endl;
+
 }

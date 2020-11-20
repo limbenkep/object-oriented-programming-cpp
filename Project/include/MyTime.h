@@ -5,6 +5,7 @@
 #ifndef TRAINS_MYTIME_H
 #define TRAINS_MYTIME_H
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <algorithm>
 

@@ -11,14 +11,14 @@ class OpenFreightCar:public CoveredFreightCar
 private:
     int floorArea;
 public:
-    OpenFreightCar(const string &pId, int pCapacity, int floorArea);
+    OpenFreightCar(int pId, int pCapacity, int floorArea);
 
     virtual ~OpenFreightCar();
 
 /*
 * returns car type
 */
-    virtual string getVehicleType()const;
+    virtual int getVehicleType()const;
 /*
 * returns number of chairs in the coach car
 */
@@ -46,7 +46,7 @@ public:
  */
     //virtual void readVehicle(ifstream &inputFile);
 
-
+    void printVehicle() const override;
     //virtual void setNrOfChairs(int pNrOfChairs){};
 /*
 * returns a bool true if Vehicle has internet options or false if it doesnot

@@ -27,9 +27,9 @@ void Station::setName(const string &pName)
     name = pName;
 }
 
-void Station::addVehicle(int pType, shared_ptr<Vehicle> &vehicle)
+void Station::addVehicle(shared_ptr<Vehicle> &vehicle)
 {
-    vehicles[pType].push_back(vehicle);
+    vehicles[vehicle->getVehicleType()].push_back(vehicle);
 }
 
 /*void Station::addEngine(string &pType, shared_ptr<Engine> &engine)
@@ -40,8 +40,7 @@ void Station::addVehicle(int pType, shared_ptr<Vehicle> &vehicle)
 template<typename T>
 void Station::sortVector(vector<T> &vec)
 {
-    sort( vec.begin( ), vec.end( ), [&vec]( const T& lhs, const T& rhs )
-    {
+    sort(vec.begin(), vec.end(), [&vec](const T &lhs, const T &rhs) {
         return lhs < rhs;
     });
 
@@ -50,14 +49,14 @@ void Station::sortVector(vector<T> &vec)
 bool Station::getVehicle(int type, shared_ptr<Vehicle> &vehicle)
 {
     auto it = vehicles.find(type);
-    if(it==vehicles.end())
+    if (it == vehicles.end())
     {
         return false;
-    }
-    else{
-        vector<shared_ptr<Vehicle>>vec;
+    } else
+    {
+        vector<shared_ptr<Vehicle>> vec;
         vec = vehicles[type];
-        if(vec.empty())
+        if (vec.empty())
         {
             return false;
         }
@@ -69,54 +68,140 @@ bool Station::getVehicle(int type, shared_ptr<Vehicle> &vehicle)
 
 }
 
-void Station::readFromFile(istream &inputFile)
+/*void Station::readFromFile(istream &inputFile)
 {
+    string line;
+    getline(inputFile, line);
+    std::replace(line.begin(), line.end(), ')', ' ');  // replace ':' by ' '
+    std::replace(line.begin(), line.end(), '(', ' ');  // replace ':' by ' '
+    istringstream iss(line);
+    iss >> name;
 
-    string tmpId, waste;
-    int tmpType;
+    int tmpType, tmpId;
     int parameter1;
     int parameter2;
-    inputFile >> name;
-    inputFile>>waste;
-    inputFile >> tmpId;
-    inputFile >> tmpType;
-    inputFile>> parameter1;
-    inputFile>> parameter2;
-    inputFile>>waste;
+    while (iss >> tmpId >> tmpType >> parameter1 >> parameter2)
+    {
+      *//*  if (tmpType == 0)
+        {
+            shared_ptr<Vehicle> vehicle(new Coach(tmpId, parameter1, parameter2));
+            addVehicle(vehicle);
+        } else if (tmpType == 1)
+        {
+            shared_ptr<Vehicle> vehicle(new SleepingCar(tmpId, parameter1));
+            addVehicle(vehicle);
+        } else if (tmpType == 2)
+        {
+            shared_ptr<Vehicle> vehicle(new OpenFreightCar(tmpId, parameter1, parameter2));
+            addVehicle(vehicle);
+        } else if (tmpType == 3)
+        {
+            shared_ptr<Vehicle> vehicle(new CoveredFreightCar(tmpId, parameter1));
+            addVehicle(tmpType, vehicle);
+        } else if (tmpType == 4)
+        {
+            shared_ptr<Vehicle> vehicle(new ElectricEngine(tmpId, parameter1, parameter2));
+            addVehicle(tmpType, vehicle);
+        } else if (tmpType == 5)
+        {
+            shared_ptr<Vehicle> vehicle(new DieselEngine(tmpId, parameter1, parameter2));
+            addVehicle(tmpType, vehicle);
+        } else
+        {
+            cout << "An unknowm Car type " << tmpType << " was read from file" << endl;
+        }
+    }*//*
+}*/
 
-    if(tmpType==0)
+void Station::readFromFile(ifstream &ifs)
+{
+    string line;
+    getline(ifs, line);
+    //if(line.empty()) return;
+    // get the station name: substring from beginning to first space
+    name = line.substr(0, line.find_first_of(' '));
+    //Station (x c f d) (x s f f 6)
+    shared_ptr<Vehicle> vehicle;
+
+    while (line.find(openBracke) != std::string::npos)
     {
-        shared_ptr<Vehicle> vehicle(new Coach(tmpId, parameter1, parameter2));
-        addVehicle(tmpType, vehicle);
-    }
-    else if(tmpType ==1)
-    {
-        shared_ptr<Vehicle> vehicle(new SleepingCar(tmpId, parameter1));
-        addVehicle(tmpType, vehicle);
-    }
-    else if(tmpType==2)
-    {
-        shared_ptr<Vehicle> vehicle(new OpenFreightCar(tmpId, parameter1, parameter2));
-        addVehicle(tmpType, vehicle);
-    }
-    else if(tmpType==3)
-    {
-        shared_ptr<Vehicle> vehicle(new CoveredFreightCar(tmpId, parameter1));
-        addVehicle(tmpType, vehicle);
-    }
-    else if(tmpType==4)
-    {
-        shared_ptr<Vehicle> vehicle(new ElectricEngine(tmpId, parameter1, parameter2));
-        addVehicle(tmpType, vehicle);
-    }
-    else if(tmpType==5)
-    {
-        shared_ptr<Vehicle> vehicle(new DieselEngine(tmpId, parameter1, parameter2));
-        addVehicle(tmpType, vehicle);
-    } else{
-        cout << "An unknowm Car type " << tmpType << " was read from file" << endl;
+        try
+        {
+            // extract rest of line without station name
+            line = line.substr(line.find(openBracke));
+
+            size_t openPos = line.find(openBracke);
+
+            size_t closePos = line.find(closeBracket);
+
+            // make sure these positions are defined
+            if (openPos != std::string::npos && closePos != std::string::npos)
+            {
+                // extract numbers withing brackets as string
+                string groupOfNumbers = line.substr(openPos + 1, closePos - 1);
+
+                /* std::cout << "Group of numbers " << groupOfNumbers << " Open pos " << openPos << " closePose "
+                           << closePos
+                           << endl;*/
+
+                // parse numbers with isstringstream object
+                istringstream iss(groupOfNumbers);
+                int tmpId;
+
+                // tokenize the numbers and store into a vector
+                vector<int> numbers;
+                while (iss >> tmpId)
+                {
+                    numbers.push_back(tmpId);
+                }
+                // iss >>  tmpId >> tmpType>>parameter1>>parameter2;
+
+                if (numbers.at(1) == 0)
+                {
+                    //iss >> parameter1 >> parameter1;
+                     vehicle =  shared_ptr<Vehicle>(new Coach(numbers.at(0), numbers.at(2), numbers.at(3)));
+                    addVehicle(vehicle);
+                } else if (numbers.at(1) == 1)
+                {
+                    vehicle = shared_ptr<Vehicle>(new SleepingCar(numbers.at(0), numbers.at(2)));
+                    addVehicle(vehicle);
+                } else if (numbers.at(1) == 2)
+                {
+                    vehicle= shared_ptr<Vehicle> (new OpenFreightCar(numbers.at(0), numbers.at(2), numbers.at(3)));
+                    addVehicle(vehicle);
+                } else if (numbers.at(1) == 3)
+                {
+                    vehicle= shared_ptr<Vehicle>(new CoveredFreightCar(numbers.at(0), numbers.at(2)));
+                    addVehicle(vehicle);
+                } else if (numbers.at(1) == 4)
+                {
+                    vehicle= shared_ptr<Vehicle>(new ElectricEngine(numbers.at(0), numbers.at(2), numbers.at(3)));
+                    addVehicle(vehicle);
+                } else if (numbers.at(1) == 5)
+                {
+                    vehicle= shared_ptr<Vehicle>(new DieselEngine(numbers.at(0), numbers.at(2), numbers.at(3)));
+                    addVehicle(vehicle);
+                } else
+                {
+                    cout << "An unknowm Car type  was read from file" << endl;
+                }
+                line = line.substr(closePos);
+            }
+        } catch (const exception &e)
+        {
+            cerr << "Exception " << e.what() << endl;
+        }
+        if(vehicle){
+          //  vehicle->printVehicle();
+        }
     }
 
+
+}
+
+VehicleMap Station::getStationVehicles() const
+{
+    return vehicles;
 }
 
 

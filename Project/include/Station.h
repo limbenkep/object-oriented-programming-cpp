@@ -13,20 +13,22 @@
 #include "DieselEngine.h"
 #include "Engine.h"
 #include <iostream>
+#include <sstream>
 #include <map>
 #include <string>
 #include <vector>
 #include <algorithm>
 #include <memory>
 using namespace std;
-
+typedef map<int, vector<shared_ptr<Vehicle>>> VehicleMap;
 class Station
 {
 private:
+    const char openBracke{'('}, closeBracket{')'};
     string name;
     //vector<shared_ptr<Vehicle>>cars;
     //vector<shared_ptr<Engine>>engines;
-    map<int, vector<shared_ptr<Vehicle>>>vehicles;
+    VehicleMap vehicles;
    // map<string, vector<shared_ptr<Engine>>>engines;
 public:
     Station();
@@ -49,7 +51,7 @@ public:
  * @param pType type of Vehicle
  * @param engine Engine object with all its properties
  */
-    void addVehicle(int pType, shared_ptr<Vehicle>&vehicle);
+    void addVehicle(shared_ptr<Vehicle>&vehicle);
 /**
  * receives an engine and the type of engine and stores it in a container containing the stations engines
  * @param pType type of Engine
@@ -73,8 +75,11 @@ public:
 
     template<typename T>
     void sortVector(vector<T>&vec);
-    virtual void readFromFile(istream &inputFile);
+    //virtual void readFromFile(istream &inputFile){};
 
+    void readFromFile(ifstream &ifs) ;
+
+    VehicleMap getStationVehicles() const;
 
 };
 

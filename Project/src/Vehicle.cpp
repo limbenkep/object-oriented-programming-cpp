@@ -4,7 +4,7 @@
 
 #include "Vehicle.h"
 
-Vehicle::Vehicle(const string &id) : id(id)
+Vehicle::Vehicle(const int id) : id(id)
 {
 }
 
@@ -13,12 +13,12 @@ Vehicle::~Vehicle()
 
 }
 
-const string &Vehicle::getId() const
+int Vehicle::getId() const
 {
     return id;
 }
 
-void Vehicle::setId(const string &pId)
+void Vehicle::setId(int pId)
 {
     id = pId;
 }

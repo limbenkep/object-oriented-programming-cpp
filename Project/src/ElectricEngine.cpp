@@ -4,7 +4,7 @@
 
 #include "ElectricEngine.h"
 
-ElectricEngine::ElectricEngine(const string &id, int maxSpeed, int maxPower) : Vehicle(id), maxSpeed(maxSpeed), maxPower(maxPower)
+ElectricEngine::ElectricEngine(int id, int maxSpeed, int maxPower) : Vehicle(id), maxSpeed(maxSpeed), maxPower(maxPower)
 
 {
 }
@@ -24,9 +24,9 @@ void ElectricEngine::setMaxPower(int pMaxPower)
     maxPower = pMaxPower;
 }
 
-string ElectricEngine::getVehicleType() const
+int ElectricEngine::getVehicleType() const
 {
-    return "Electrical";
+    return 4;
 }
 
 int ElectricEngine::getMaxSpeed() const
@@ -37,6 +37,11 @@ int ElectricEngine::getMaxSpeed() const
 void ElectricEngine::setMaxSpeed(int pMaxSpeed)
 {
     maxSpeed = pMaxSpeed;
+}
+
+void ElectricEngine::printVehicle() const
+{
+    cout<< "Electric engine, Type:" << getVehicleType() <<  ", id: " << id << ", Max speed: " << maxSpeed<< "km/h, Power: " << maxPower <<"kW" <<endl;
 }
 
 /*void ElectricEngine::readVehicle(ifstream &inputFile)

@@ -4,7 +4,7 @@
 
 #include "Coach.h"
 
-Coach::Coach(const string &id, int nrOfChairs, bool internet) : Vehicle(id), nrOfChairs(nrOfChairs), internet(internet)
+Coach::Coach(int id, int nrOfChairs, bool internet) : Vehicle(id), nrOfChairs(nrOfChairs), internet(internet)
 {
 }
 
@@ -13,9 +13,9 @@ Coach::~Coach()
 
 }
 
-string Coach::getVehicleType() const
+int Coach::getVehicleType() const
 {
-    return "Coach";
+    return 0;
 }
 
 int Coach::getNrOfChairs() const
@@ -26,6 +26,12 @@ int Coach::getNrOfChairs() const
 bool Coach::getInternet() const
 {
     return internet;
+}
+
+void Coach::printVehicle() const
+{
+    cout<< "Coach Vehicle Type:" << getVehicleType() <<  ", id: " << id << ", Nunber of Chairs: " << nrOfChairs << ", Internet: " << internet << endl;
+
 }
 
 /*void Coach::readVehicle(ifstream &inputFile)
