@@ -1,10 +1,13 @@
 //
-// Created by limbe on 2020-11-18.
+// Created by limbe on 2020-11-20.
 //
 
 #ifndef TRAINS_MYTIME_H
 #define TRAINS_MYTIME_H
 #include <iostream>
+#include <string>
+#include <algorithm>
+
 using namespace std;
 
 class MyTime
@@ -44,8 +47,8 @@ public:
     //function receives time as total number of seconds (int) and sets hours, minutes and seconds
     void setTime(const int pTotalSec);
 };
+
 //overload operators for reading from and writin gto a fileMenu
 istream &operator>> (istream & is, MyTime &time);
 ostream &operator<< (ostream &os, const MyTime &time);
-
 #endif //TRAINS_MYTIME_H

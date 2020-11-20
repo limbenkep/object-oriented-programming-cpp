@@ -1,5 +1,5 @@
 //
-// Created by limbe on 2020-11-18.
+// Created by limbe on 2020-11-20.
 //
 
 #include "MyTime.h"
@@ -94,9 +94,12 @@ ostream &operator<< (ostream &os, const MyTime &time)
 
 istream &operator>> (istream & is, MyTime &time)
 {
-    int temp = 0;
-    is >> temp;
-    is.get(); // reads and discards end of line
+    string str;
+    is >> str;
+    std::replace(str.begin(), str.end(), ':', ' ');  // replace ':' by ' '
+    stringstream ss(str);
+
     time.setTime(temp);
     return is;
 }
+
