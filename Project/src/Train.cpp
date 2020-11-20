@@ -14,10 +14,12 @@ Train::Train(int trainId, const string &departure, const string &arrival, const 
                                                         maxSpeed(maxSpeed)
 {
 }
+
 Train::~Train()
 {
 
 }
+
 int Train::getTrainId() const
 {
     return trainId;
@@ -78,9 +80,25 @@ void Train::setMaxSpeed(int speed)
     maxSpeed = speed;
 }
 
-void Train::addVehicleType(const string &pType)
+void Train::addVehicleType(int pType)
 {
     vehicleType.push_back(pType);
+}
+
+void Train::readTrainFromFile(ifstream &inFile)
+{
+
+
+    std::string line;
+    std::getline(inFile, line);
+
+    std::istringstream iss(line);
+    iss >> trainId >> departure >> destination >> departureTime >> arrivalTime >> maxSpeed;
+    int type;
+    while (iss >> type)
+    {
+        addVehicleType(type);
+    }
 }
 
 

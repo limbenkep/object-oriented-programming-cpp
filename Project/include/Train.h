@@ -5,7 +5,9 @@
 #ifndef TRAINS_TRAIN_H
 #define TRAINS_TRAIN_H
 #include <iostream>
+#include <fstream>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <algorithm>
 #include "MyTime.h"
@@ -21,7 +23,7 @@ private:
     MyTime departureTime;// Train's time of departure
     MyTime arrivalTime;// Train's time of arrival
     int maxSpeed; //// Train's max speed
-    vector<string>vehicleType; //states the types of vehicle and engine that makes the train
+    vector<int>vehicleType; //states the types of vehicle and engine that makes the train
 
 public:
     Train(int pTrainId);
@@ -106,7 +108,8 @@ public:
  * adds a vehicle type to the types of vehicle that makes up the train
  * @param pType a vehicle type
  */
-    void addVehicleType(const string &pType);
+    void addVehicleType(int pType);
+    void readTrainFromFile(ifstream &inFile);
 };
 
 

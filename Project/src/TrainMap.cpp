@@ -45,7 +45,7 @@ void TrainMap::setDistance(int pDistance)
     distance = pDistance;
 }
 
-void TrainMap::readFromFile(ifstream &inFile)
+void TrainMap::readMapFromFile(ifstream &inFile)
 {
     inFile>>station1;
     inFile>>station2;

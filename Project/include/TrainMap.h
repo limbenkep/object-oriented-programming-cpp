@@ -33,7 +33,7 @@ public:
     int getDistance() const;
 
     void setDistance(int pDistance);
-    void readFromFile(ifstream &inFile);
+    void readMapFromFile(ifstream &inFile);
 
 };
 
