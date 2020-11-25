@@ -24,7 +24,7 @@ typedef map<int, vector<shared_ptr<Vehicle>>> VehicleMap;
 class Station
 {
 private:
-    const char openBracke{'('}, closeBracket{')'};
+
     string name;
     //vector<shared_ptr<Vehicle>>cars;
     //vector<shared_ptr<Engine>>engines;

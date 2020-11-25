@@ -86,6 +86,12 @@ void MyTime::setTime(const int pTotalSec)
     hours = temp/60;
 }
 
+void MyTime::subtractSecs(int secs)
+{
+    setTime(timeToSeconds()-secs);
+}
+
+
 ostream &operator<< (ostream &os, const MyTime &time)
 {
     //os << time.timeToSeconds();

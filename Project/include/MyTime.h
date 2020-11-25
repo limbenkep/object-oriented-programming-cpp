@@ -47,6 +47,8 @@ public:
     int timeToSeconds () const;
     //function receives time as total number of seconds (int) and sets hours, minutes and seconds
     void setTime(const int pTotalSec);
+    void subtractSecs(int secs);
+
 };
 
 //overload operators for reading from and writin gto a fileMenu

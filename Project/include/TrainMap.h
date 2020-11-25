@@ -4,9 +4,11 @@
 
 #ifndef TRAINS_TRAINMAP_H
 #define TRAINS_TRAINMAP_H
+
 #include <iostream>
 #include <fstream>
 #include <string>
+
 using namespace std;
 
 
@@ -18,6 +20,8 @@ private:
     int distance;//distance between the two stations
 
 public:
+    TrainMap();
+
     TrainMap(const string &name1, const string &name2, int pDistance);
 
     virtual ~TrainMap();
@@ -33,7 +37,13 @@ public:
     int getDistance() const;
 
     void setDistance(int pDistance);
+
     void readMapFromFile(ifstream &inFile);
+
+    void printMap();
+
+    int getDistanceFromDestinations(const string &departure, const string &arrival);
+
 
 };
 

@@ -115,6 +115,7 @@ bool Station::getVehicle(int type, shared_ptr<Vehicle> &vehicle)
 
 void Station::readFromFile(ifstream &ifs)
 {
+
     string line;
     getline(ifs, line);
     //if(line.empty()) return;
@@ -122,7 +123,7 @@ void Station::readFromFile(ifstream &ifs)
     name = line.substr(0, line.find_first_of(' '));
     //Station (x c f d) (x s f f 6)
     shared_ptr<Vehicle> vehicle;
-
+    const char openBracke{'('}, closeBracket{')'};
     while (line.find(openBracke) != std::string::npos)
     {
         try
