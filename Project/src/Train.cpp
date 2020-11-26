@@ -80,9 +80,26 @@ int Train::getSpeed() const
     return speed;
 }
 
-void Train::setSpeed(int pSpeed)
+void Train::setSpeed()
 {
-    speed = pSpeed;
+    double travelTime = (arrivalTime.timeToSeconds() - departureTime.timeToSeconds())/216000.0;
+    cout << " Travel time" << travelTime << endl;
+    double travelSpeed = distance/travelTime;
+    cout << " Travel speed" << travelSpeed << endl;
+    double max_speed = static_cast<double >(maxSpeed);
+    if(travelSpeed<max_speed)
+    {
+        speed= static_cast<int>(travelSpeed);
+    }
+    else{
+        speed = maxSpeed;
+        double newTravelTime = distance/max_speed;
+        int pDelay = static_cast<int>((newTravelTime-travelTime)*216000.0);
+        MyTime newDelay;
+        newDelay.setTime(pDelay);
+        setDelay(newDelay);
+    }
+
 }
 
 int Train::getMaxSpeed() const
@@ -121,7 +138,8 @@ void Train::readTrainFromFile(ifstream &inFile)
     cout << "Train id: " << trainId << ", Departure: " << departure << ", Destination: " << destination
     << ", Departure time: " << departureTime << ", Arrival time: " << arrivalTime << endl;
     cout << departureTime << " Train [" << trainId << "] " << stateDetail[status] << " from " << departure << " "
-    << departureTime << " (" << getDepartureTime() << ") delay (" << delay << ") speed = " << maxSpeed << "is now " << endl;
+    << departureTime << " (" << getDepartureTime() << ") delay (" << delay << ") speed = " << speed << "km/h is now "
+    << " Distance " << distance << " max speed " << maxSpeed <<endl;
 
 }
 

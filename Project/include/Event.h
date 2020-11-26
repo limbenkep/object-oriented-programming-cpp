@@ -16,6 +16,7 @@ class Simulation;
 class TrainCompany;
 
 typedef shared_ptr<TrainCompany> TrainCompany_ptr;
+typedef shared_ptr<Simulation> Sim_ptr;
 class Event
 {
 protected:
@@ -58,7 +59,7 @@ class EventComparison
 public:
     bool operator()(shared_ptr<Event> &left, shared_ptr<Event> &right)
     {
-        return left->getTimeInSec() < right->getTimeInSec();
+        return left->getTimeInSec() > right->getTimeInSec();
     }
 };
 
@@ -66,12 +67,12 @@ public:
 class NotAssembledEvent : public Event
 {
 protected:
-    Simulation *theSim;
+    Sim_ptr theSim;
     //TrainCompany *theCom;
     TrainCompany_ptr theCom;
 
 public:
-    NotAssembledEvent(const MyTime &time, const Train &train, Simulation *theSim, TrainCompany_ptr &theCom)
+    NotAssembledEvent(const MyTime &time, const Train &train, Sim_ptr &theSim, TrainCompany_ptr &theCom)
             : Event(time, train), theSim(theSim), theCom(theCom)
     {
     }
@@ -87,12 +88,12 @@ public:
 class AssembledEvent : public Event
 {
 protected:
-    Simulation *theSim;
+    Sim_ptr theSim;
     TrainCompany_ptr theCom;
 
 
 public:
-    AssembledEvent(const MyTime &time, const Train &train, Simulation *theSim, TrainCompany_ptr &theCom) : Event(time, train), theSim(theSim), theCom(theCom)
+    AssembledEvent(const MyTime &time, const Train &train, Sim_ptr &theSim, TrainCompany_ptr &theCom) : Event(time, train), theSim(theSim), theCom(theCom)
     {
     }
 
@@ -107,12 +108,12 @@ public:
 class IncompleteEvent : public Event
 {
 protected:
-    Simulation *theSim;
+    Sim_ptr theSim;
     TrainCompany_ptr theCom;
     vector<int>missingVehicle;
 
 public:
-    IncompleteEvent(const MyTime &time, const Train &train, Simulation *theSim, TrainCompany_ptr &theCom,
+    IncompleteEvent(const MyTime &time, const Train &train, Sim_ptr &theSim, TrainCompany_ptr &theCom,
                     const vector<int> &missingVehicle) : Event(time, train), theSim(theSim), theCom(theCom),
                                                          missingVehicle(missingVehicle)
     {
@@ -130,13 +131,13 @@ public:
 class ReadyEvent : public Event
 {
 protected:
-    Simulation *theSim;
-    //TrainCompany *theCom;
+    Sim_ptr theSim;
+    TrainCompany_ptr theCom;
 
     //Train *train;
 
 public:
-    ReadyEvent(const MyTime &time, const Train &train, Simulation *theSim) : Event(time, train), theSim(theSim)
+    ReadyEvent(const MyTime &time, const Train &train, Sim_ptr &theSim, TrainCompany_ptr &theCom) : Event(time, train), theSim(theSim), theCom(theCom)
     {
     }
 
@@ -152,11 +153,11 @@ class RunningEvent : public Event
 {
 
 protected:
-    Simulation *theSim;
-    //TrainCompany *theCom;
+    Sim_ptr theSim;
+    TrainCompany_ptr theCom;
 
 public:
-    RunningEvent(const MyTime &time, const Train &train, Simulation *theSim) : Event(time, train), theSim(theSim)
+    RunningEvent(const MyTime &time, const Train &train, Sim_ptr &theSim, TrainCompany_ptr &theCom) : Event(time, train), theSim(theSim), theCom(theCom)
     {
     }
 
@@ -171,15 +172,14 @@ public:
 class ArrivedEvent : public Event
 {
 protected:
-    Simulation *theSim;
+    Sim_ptr theSim;
     TrainCompany_ptr theCom;
 
     //Train *train;
 
 public:
-    ArrivedEvent(const MyTime &time, const Train &train, Simulation *theSim, TrainCompany_ptr &theCom) : Event(time, train),
-                                                                                                     theSim(theSim),
-                                                                                                     theCom(theCom)
+    ArrivedEvent(const MyTime &time, const Train &train, Sim_ptr &theSim, TrainCompany_ptr &theCom) : Event(
+            time, train), theSim(theSim), theCom(theCom)
     {
     }
 
@@ -194,12 +194,11 @@ public:
 class FinishEvent : public Event
 {
 protected:
-    Simulation *theSim;
+    Sim_ptr theSim;
     TrainCompany_ptr theCom;
-    //Train *train;
 
 public:
-    FinishEvent(const MyTime &time, const Train &train, Simulation *theSim, TrainCompany_ptr &theCom) : Event(time, train),
+    FinishEvent(const MyTime &time, const Train &train, Sim_ptr &theSim, TrainCompany_ptr &theCom) : Event(time, train),
                                                                                                     theSim(theSim),
                                                                                                     theCom(theCom)
     {

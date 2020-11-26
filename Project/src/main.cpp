@@ -36,7 +36,7 @@ int main()
         std::cerr << "Error reading station file\n";
     }*/
     shared_ptr<TrainCompany>theCom(new TrainCompany());
-    Simulation *theSim = new Simulation();
+    shared_ptr<Simulation>theSim(new Simulation());
     const string trainFile("Trains.txt");
     std::ifstream ifstream1(trainFile);
     vector<Train> trains;
@@ -47,11 +47,11 @@ int main()
         {
             train.readTrainFromFile(ifstream1);
             trains.push_back(train);
-            train.printTrain();
+            //train.printTrain();
             train.setDistance(theCom->getDistanceOfTrainStations(train));
             shared_ptr<Event>e(new NotAssembledEvent(train.getDepartureTime(), train, theSim, theCom));
             theSim->scheduleEvent(e);
-            cout << "The distance to travel: " <<train.getDistance() << " km" <<endl;
+            //cout << "The distance to travel: " <<train.getDistance() << " km" <<endl;
         }
         //VehicleMap vehicles = station.getStationVehicles();
         cout << "Nr of trains: " << trains.size() << endl;

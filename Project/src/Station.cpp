@@ -55,15 +55,20 @@ bool Station::getVehicle(int type, shared_ptr<Vehicle> &vehicle)
     } else
     {
         vector<shared_ptr<Vehicle>> vec;
-        vec = vehicles[type];
-        if (vec.empty())
+        //vec = vehicles[type];
+        if (vehicles[type].empty())
         {
             return false;
         }
-        sortVector(vec);
-        vehicle = vec[0];
-        auto toDelete = vec[0];
-        return true;
+        else{
+            sortVector(vehicles[type]);
+            vehicle = move(vehicles[type][0]);
+            //cout <<"Vehicle id" <<  vehicle->getId() <<endl;
+            vehicles[type].erase(vehicles[type].begin());
+            //cout <<"Vehicle id" <<  vehicle->getId() <<endl;
+            return true;
+        }
+
     }
 
 }

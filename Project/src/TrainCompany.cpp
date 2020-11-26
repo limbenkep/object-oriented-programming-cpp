@@ -113,3 +113,13 @@ void TrainCompany::scheduleNotAssembledTrains()
 
 }
 
+void TrainCompany::returnVehicleToStation(Train &train)
+{
+    vector<shared_ptr<Vehicle>> vehicles = train.getAssembled();//copies the vector of vehicles assembled to the passed train
+    for(auto &idx: vehicles)
+    {
+        idx->getVehicleType();
+        stations[train.getDestination()].addVehicle(idx);
+    }
+}
+

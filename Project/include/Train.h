@@ -123,8 +123,7 @@ public:
  * sets speed
  * @param speed
  */
-    void setSpeed(int pSpeed);
-
+    void setSpeed();
 
 /**
  *
