@@ -10,7 +10,7 @@ set (CMAKE_CXX_STANDARD 11)
 aux_source_directory(src/ SOURCES)
 
 # Create executable for the run configuration
-add_executable(${PROJECT_NAME}-Laboration_5 ${SOURCES} src/ListManipulator.cpp include/ListManipulator.h)
+add_executable(${PROJECT_NAME}-Laboration_5 ${SOURCES} src/ListManipulator.cpp include/ListManipulator.h src/UserInterface.cpp include/UserInterface.h include/Helper.h)
 
 # In order to avoid '../../../' semantics in include paths (relative), we need to add
 # target directory to the configuration
