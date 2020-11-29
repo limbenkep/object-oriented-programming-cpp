@@ -8,9 +8,9 @@
  * This is a userinterface class that gets user's request and calls functions theperfom the requested actions
  * and prints information about what is going on in the program as well as output.
  */
-#ifndef LIST_MANIPULATOR_USERINTERFACE_H
-#define LIST_MANIPULATOR_USERINTERFACE_H
-#include "ListManipulator.h"
+#ifndef LIST_MANIPULATOR_USERINTERFACE_HPP
+#define LIST_MANIPULATOR_USERINTERFACE_HPP
+#include "ListManipulator.hpp"
 
 template<typename T>
 class UserInterface
@@ -375,4 +375,4 @@ void UserInterface<T>::printList()
 }
 
 
-#endif //LIST_MANIPULATOR_USERINTERFACE_H
+#endif //LIST_MANIPULATOR_USERINTERFACE_HPP

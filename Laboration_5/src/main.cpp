@@ -12,9 +12,8 @@
  * Find largest and smallest number, Sort, Clear list, write to file,  Read from file, Print numbers, Quit.
  */
 
-#include "Prototypes.h"
 #include "memstat.hpp"
-#include "UserInterface.h"
+#include "UserInterface.hpp"
 
 typedef double Type;
 void mainTestFunction();

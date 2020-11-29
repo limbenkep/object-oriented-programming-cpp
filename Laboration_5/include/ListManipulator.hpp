@@ -10,8 +10,8 @@
  * divide numbers by 2 and get number between 1500 and 1900.
  */
 
-#ifndef LIST_MANIPULATOR_LISTMANIPULATOR_H
-#define LIST_MANIPULATOR_LISTMANIPULATOR_H
+#ifndef LIST_MANIPULATOR_LISTMANIPULATOR_HPP
+#define LIST_MANIPULATOR_LISTMANIPULATOR_HPP
 
 #include "Helper.h"
 #include <iomanip>
@@ -274,4 +274,4 @@ bool ListManipulator<T>::listIsEmpty()
 }
 
 
-#endif //LIST_MANIPULATOR_LISTMANIPULATOR_H
+#endif //LIST_MANIPULATOR_LISTMANIPULATOR_HPP
