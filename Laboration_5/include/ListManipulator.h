@@ -1,11 +1,18 @@
-//
-// Created by limbe on 2020-11-27.
-//
+/*ListManipulator.h
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_5
+* 2020-11-27.
+*/
+/**==================Short description====================================================================
+ * This class is a list manipulator that has a pointer to a list as a dataamember and has member functions to
+ * manipulate list like fill with random numbers, swap, sort, clear, print, get sum, average, max and min,
+ * divide numbers by 2 and get number between 1500 and 1900.
+ */
 
 #ifndef LIST_MANIPULATOR_LISTMANIPULATOR_H
 #define LIST_MANIPULATOR_LISTMANIPULATOR_H
 
-//#include <chrono>
 #include "Helper.h"
 #include <iomanip>
 
@@ -265,9 +272,6 @@ bool ListManipulator<T>::listIsEmpty()
 {
     return theList->empty();
 }
-
-//
-
 
 
 #endif //LIST_MANIPULATOR_LISTMANIPULATOR_H

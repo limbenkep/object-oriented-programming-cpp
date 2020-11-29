@@ -1,7 +1,13 @@
-//
-// Created by limbe on 2020-11-27.
-//
-
+/*UserInterface.h
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_5
+* 2020-11-27.
+*/
+/**==================Short description====================================================================
+ * This is a userinterface class that gets user's request and calls functions theperfom the requested actions
+ * and prints information about what is going on in the program as well as output.
+ */
 #ifndef LIST_MANIPULATOR_USERINTERFACE_H
 #define LIST_MANIPULATOR_USERINTERFACE_H
 #include "ListManipulator.h"
@@ -215,8 +221,6 @@ void UserInterface<T>::nextMoveKey()
 {
     cout << "\n\tPress 'ENTER' to continue!";
     cin.get();
-    cin.clear();
-    cin.ignore(1000, '\n');
 }
 
 template<typename T>

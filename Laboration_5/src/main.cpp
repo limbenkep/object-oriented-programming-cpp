@@ -1,3 +1,17 @@
+/*main.cpp
+* Honorine Lima
+* Holi1900
+* DT060G_Laboration_5
+* 2020-11-27.
+*/
+/**==================Short description====================================================================
+ * This program generates and manages random numbers between 1000 and 2000.
+ * The generated numbers are stored on a list. At the user chooses if the numbers will be of type double or int, after which
+ * a menu is presented with the following options to choose from; Fill list with random numbers, Summerize the values in
+ * the list, Average of the numbers, Find first number between 1500 and 1900, Divide by two, Swap places,
+ * Find largest and smallest number, Sort, Clear list, write to file,  Read from file, Print numbers, Quit.
+ */
+
 #include "Prototypes.h"
 #include "memstat.hpp"
 #include "UserInterface.h"
