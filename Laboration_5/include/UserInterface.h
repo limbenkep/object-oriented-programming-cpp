@@ -11,34 +11,98 @@ class UserInterface
 {
 private:
     ListManipulator<T> listManipulator;
-
-
-public:
-    UserInterface(list<T>*theList);
-
-    virtual ~UserInterface();
+//=================Member functions====================================================================
+/**
+ * prints the menu options on the screen
+ */
     void printMenu();
+/**
+ * print message prompting user to make a choice and return choice as an int
+ * @return
+ */
     int getChoice();
+
+/**
+ * prints menu options and get and return user's choice
+ * @return menu choice
+ */
     int getMenuChoice();
-    void executeMenu();
+/**
+ * pause program until user press enter button to continue
+ */
     void nextMoveKey();
+/**
+ * fills list with random number
+ */
     void fillList();
+/**
+ * prints the sum of the numbers on the screen on the screen
+ */
     void printSumOfList();
+/**
+ * prints the average of the numbers on the screen on the screen
+ */
     void printAverage();
+
+/**
+ * prints the first number between 1500 and 1900 on the screen on the screen
+ */
     void printFirstValueBetween1500And1900();
+
+/**
+ * divides all the numbers on the list by 2
+ */
     void divideListElementsBy2();
+
+/**
+ * swap the elements on the list swapping the first and the last the next to first
+ * and next to last until all numbers are swpped
+ */
     void swapListElements();
+
+/**
+ * prints the minimum and maximum values on the list on the screen
+ */
     void printMaxAndMinValue();
+
+/**
+ * sorts the numbers on the list in ascending order
+ */
     void sortList();
+
+/**
+ * Empty the list
+ */
     void clearList();
+
+/**
+ * writes the numbers on the list to a file
+ */
     void writeToFile();
 
+/**
+ * reads numbers from a file and store to a list
+ */
     void readFromFile();
+
+/**
+ * prints the numbers on the list on the screen
+ */
     void printList();
 
 
+public:
+/**
+ * constructor takes a pointer to a list which is used to initialise the ListManipulator object which is data member
+ * @param theList
+ */
+    UserInterface(list<T>*theList);
 
+    virtual ~UserInterface();
 
+ /**
+  * executes menu options
+  */
     void run();
 
 };
@@ -66,7 +130,7 @@ void UserInterface<T>::printMenu()
 template<typename T>
 int UserInterface<T>::getChoice()
 {
-    cout << "Make your choice:";
+    cout << "\nMake your choice:";
     int choice = 0;
     cin>>choice;
     if (!cin||choice<1)// this control ensures that number of albums, number of songs, song length for which is function is used to get can not be 0
@@ -80,7 +144,7 @@ int UserInterface<T>::getChoice()
 }
 
 template<typename T>
-void UserInterface<T>::executeMenu()
+void UserInterface<T>::run()
 {
     bool again = true;
     while(again)
@@ -151,24 +215,8 @@ void UserInterface<T>::nextMoveKey()
 {
     cout << "\n\tPress 'ENTER' to continue!";
     cin.get();
-}
-
-template<typename T>
-void UserInterface<T>::run()
-{
-    cout << "Choose the type of list. \n1. Int, \n2. Double." << endl;
-    int choice = getChoice();
-    while(choice<1||choice>2)
-    {
-        cout << "\nInvalid choice. Choice must be 1 0r 2." << endl;
-        cout << "Choose the type of list. \n1. Int, \n2. Double." << endl;
-        choice = getChoice();
-    }
-    if (choice==1)
-    {
-        list<int> *intList;
-        //executeMenu()
-    }
+    cin.clear();
+    cin.ignore(1000, '\n');
 }
 
 template<typename T>
@@ -225,8 +273,12 @@ void UserInterface<T>::printFirstValueBetween1500And1900()
         cout << "The list is empty." << endl;
     } else{
         T num;
-        listManipulator.findFirst1500_1900(num);
-        cout << "The first number between 1500 and 1900 is " << num<< "." << endl;
+        if(listManipulator.findFirst1500_1900(num))
+        {
+            cout << "The first number between 1500 and 1900 is " << num<< "." << endl;
+        }else{
+            cout << "There is no number between 1500 and 1900 on the list. " << endl;
+        }
     }
 }
 

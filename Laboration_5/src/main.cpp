@@ -26,14 +26,14 @@ void mainTestFunction()
     {
         list<int> intList;
         UserInterface<int> user(&intList);
-        user.executeMenu();
+        user.run();
 
     }
     if (choice==2)
     {
         list<double> intList;
         UserInterface<double> user(&intList);
-        user.executeMenu();
+        user.run();
 
     }
 }

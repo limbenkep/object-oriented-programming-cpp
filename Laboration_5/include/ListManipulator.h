@@ -15,35 +15,75 @@ class ListManipulator
 private:
     list<T> *theList;
 public:
+/**
+ * constructor takes a pointer to a list
+ * @param theList
+ */
     ListManipulator(list<T> *theList);
 
     virtual ~ListManipulator();
-
+/**
+ * fills list with random numbers
+ */
     void fillList();
-
+/**
+ *
+ * @return returns the sum of all the elements in the list
+ */
     T sumList() const;
-
+/**
+ *
+ * @return returns the average of all the elements in the list
+ */
     T listAverage() const;
-
+/**
+ * gets the first number between 1500 to 1900
+ * @param num first number between 1500 to 1900 return by reference
+ * @return return true if a number if found or false if no number if found
+ */
     bool findFirst1500_1900(T &num) const;
-
+/**
+ * divides the number on the list by 2
+ */
     void dividedByTwo();
-
+/**
+ * swap the elements on the list swapping the first and the last the next to first
+ * and next to last until all numbers are swpped
+ */
     void swapPlaces();
-
+/**
+ * finds the minimum and maximum values on the list and pass by reference
+ */
     void findMinMax(T &min, T &max) const;
-
+/**
+ * sort list in ascending order
+ */
     void sortList();
-
+/**
+ * empty list
+ */
     void clearList();
-
+/**
+ *
+ * @return the list
+ */
     list<T> getList() const;
-
+/**
+ * writes numbers on the list to a file
+ */
     void saveToFile() const;
-
+/**
+ * reads numbers to the list from a file
+ */
     void readFromFile();
-
+/**
+ * prints the numbers on the list on the screen
+ */
     void printList();
+/**
+ *
+ * @return true if list is empty and false if not empty
+ */
     bool listIsEmpty();
 
 
@@ -123,9 +163,9 @@ void ListManipulator<T>::swapPlaces()
 
         for (size_t i = 0; i < mySize/2; i++)
         {
+            bIt--; // makes sure theList->end() is not swapped as part of the list
             iter_swap(fIt, bIt);
             fIt++;
-            bIt--;
         }
     }
 
@@ -177,10 +217,13 @@ void ListManipulator<T>::saveToFile() const
     {
         cout << "The list is empty and can not be rad to file." << endl;
     } else{
-        ofstream outFile("output.dat");
-        for (typename list<T>::iterator it = theList->begin(); it != theList->end(); ++it)
+        ofstream outFile("list.txt");
+        if(!outFile.is_open())
         {
-            outFile << *it << endl;
+            cout << "The file could not be opened" << endl;
+        }
+        else{
+            copy(theList->begin(), theList->end(), ostream_iterator<T>(outFile, "\n"));
         }
     }
 }
@@ -189,7 +232,7 @@ template<typename T>
 void ListManipulator<T>::readFromFile()
 {
     clearList();
-    ifstream inFile("list.dat");
+    ifstream inFile("list.txt");
     if(!inFile.is_open())
     {
         cout << "File  'list.dat' not found." << endl;
